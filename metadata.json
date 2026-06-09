@@ -1,0 +1,6 @@
+{
+  "name": "Ginger Huff Interiors",
+  "description": "A breathtaking, high-end glassmorphic showcase for Ginger Huff Interiors. family-owned for three generations, presenting luxury residential, commercial, kitchen & bath, and E-design services in the St. Louis Metro Area.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
