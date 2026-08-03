@@ -34,7 +34,7 @@ const TREATMENT_CATEGORIES = [
       'Custom hardware: rods, rings, and statement finials',
       'Professional measurement, fabrication & white-glove installation',
     ],
-    image: '/images/window_treatments_hero.png',
+    image: '/images/window_treatments_hero.webp',
     badge: 'Signature Service',
   },
   {
@@ -51,7 +51,7 @@ const TREATMENT_CATEGORIES = [
       'Custom paint matching to any Sherwin Williams color',
       'Full-frame & café-style configurations available',
     ],
-    image: '/images/window_shutters_detail.png',
+    image: '/images/window_shutters_detail.webp',
     badge: 'Most Requested',
   },
   {
@@ -68,7 +68,7 @@ const TREATMENT_CATEGORIES = [
       'Solar, blackout, and woven wood motorized options',
       'Battery, hardwired, and rechargeable motor systems',
     ],
-    image: '/images/motorized_shades.png',
+    image: '/images/motorized_shades.webp',
     badge: 'Hunter Douglas Partner',
   },
   {
@@ -85,7 +85,7 @@ const TREATMENT_CATEGORIES = [
       'Custom sizing to the 1/8 inch for a perfect fit',
       'Woven wood, linen, velvet, and performance fabric options',
     ],
-    image: '/images/roman_shades_kitchen.png',
+    image: '/images/roman_shades_kitchen.webp',
     badge: 'Most Versatile',
   },
 ];
@@ -154,7 +154,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
         {/* Hero background image */}
         <div className="absolute inset-0">
           <img
-            src="/images/window_treatments_hero.png"
+            src="/images/window_treatments_hero.webp"
             alt="Custom luxury window treatments by Ginger Huff Interiors"
             className="w-full h-full object-cover opacity-60"
           />
@@ -428,10 +428,10 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl">
-                <img src="/images/motorized_shades.png" alt="Motorized Hunter Douglas shades" className="w-full h-full object-cover" />
+                <img src="/images/motorized_shades.webp" alt="Motorized Hunter Douglas shades" className="w-full h-full object-cover" />
               </div>
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl mt-8">
-                <img src="/images/window_shutters_detail.png" alt="Plantation shutters detail" className="w-full h-full object-cover" />
+                <img src="/images/window_shutters_detail.webp" alt="Plantation shutters detail" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -449,10 +449,10 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { src: '/images/window_treatments_hero.png', caption: 'Custom Drapery · Ladue, MO' },
-              { src: '/images/window_shutters_detail.png', caption: 'Plantation Shutters · Edwardsville, IL' },
-              { src: '/images/motorized_shades.png', caption: 'Motorized Shades · Clayton, MO' },
-              { src: '/images/roman_shades_kitchen.png', caption: 'Roman Shades · Town & Country, MO' },
+              { src: '/images/window_treatments_hero.webp', caption: 'Custom Drapery · Ladue, MO' },
+              { src: '/images/window_shutters_detail.webp', caption: 'Plantation Shutters · Edwardsville, IL' },
+              { src: '/images/motorized_shades.webp', caption: 'Motorized Shades · Clayton, MO' },
+              { src: '/images/roman_shades_kitchen.webp', caption: 'Roman Shades · Town & Country, MO' },
             ].map((img, i) => (
               <div key={i} className="group relative rounded-2xl overflow-hidden shadow-md aspect-[3/4] border border-stone-100 hover:shadow-xl transition-shadow duration-500">
                 <img src={img.src} alt={img.caption} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
