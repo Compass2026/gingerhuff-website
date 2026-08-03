@@ -15,7 +15,7 @@ export const SERVICES: Service[] = [
     title: 'Home Interiors',
     shortDescription: 'Bespoke residential solutions meticulously tailored representing the absolute pinnacle of custom style.',
     description: 'Our premier residential service delivers completely personalized layout planning, color coordination, fine art advising, and tailored custom furniture, resulting in cohesive luxury that perfectly fits your day-to-day life.',
-    image: '/src/assets/images/modern_living_room_1780882249127.png',
+    image: '/images/modern_living_room_1780882249127.png',
     features: [
       'Full-Scale Spatial Planning',
       'Custom Furniture Design & Fabric Sourcing',
@@ -29,7 +29,7 @@ export const SERVICES: Service[] = [
     title: 'Kitchen & Bath',
     shortDescription: 'Bespoke, timeless redesigns creating modern hubs of culinary luxury and serene spa-like relaxation.',
     description: 'We elevate kitchens and bathrooms from utility spaces to custom architectural highlights. We source gorgeous countertops, bespoke custom cabinetry, statement plumbing fixtures, and innovative space solutions.',
-    image: '/src/assets/images/kitchen_remodel_1780882262249.png',
+    image: '/images/kitchen_remodel_1780882262249.png',
     features: [
       'Custom Cabinetry Design & Layouts',
       'Premium Solid-Surface & Marble Selection',
@@ -43,7 +43,7 @@ export const SERVICES: Service[] = [
     title: 'Commercial Design',
     shortDescription: 'Polished, contemporary corporate and boutique layouts centered on productivity, elegance, and brand identity.',
     description: 'Whether a stylish client-facing boutique, a luxury doctor’s office, or a modern corporate suite, we design layouts that inspire productivity, celebrate your brand, and leave your clients breathless.',
-    image: '/src/assets/images/commercial_lounge_1780882276745.png',
+    image: '/images/commercial_lounge_1780882276745.png',
     features: [
       'Brand Identity Interior Integration',
       'High-Durability Professional Furnishings',
@@ -57,7 +57,7 @@ export const SERVICES: Service[] = [
     title: 'E-Design & Virtual Consultation',
     shortDescription: 'Flexible, high-efficiency remote interior architectural planning delivered directly to your inbox.',
     description: 'Distance is no barrier to high-end luxury. Through our curated E-Design services, we deliver comprehensive, digital room plans, 3D photorealistic mockups, and clickable buying guides tailored to your budget and room measurements.',
-    image: '/src/assets/images/edesign_bedroom_1780882294734.png',
+    image: '/images/edesign_bedroom_1780882294734.png',
     features: [
       'Interactive Room Layout Renderings (3D)',
       'Clickable Curated Shopping & Sourcing Guild',
@@ -74,7 +74,7 @@ export const PROJECTS: Project[] = [
     title: 'The Ladue Contemporary Estate',
     category: 'Home Interiors',
     description: 'A complete custom interior remodeling featuring breathtaking panoramic glass views, hand-selected Travertine fireplace surround, and bespoke silk velvet couches.',
-    image: '/src/assets/images/modern_living_room_1780882249127.png',
+    image: '/images/modern_living_room_1780882249127.png',
     location: 'Ladue, MO',
     year: '2025'
   },
@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
     title: 'Edwardsville Modern Oak Kitchen',
     category: 'Kitchen & Bath',
     description: 'Warm oak paneling combined with black soapstone slabs and glowing glass pendants to create an award-winning open atmosphere.',
-    image: '/src/assets/images/kitchen_remodel_1780882262249.png',
+    image: '/images/kitchen_remodel_1780882262249.png',
     location: 'Edwardsville, IL',
     year: '2025'
   },
@@ -92,7 +92,7 @@ export const PROJECTS: Project[] = [
     title: 'Clayton Corporate Executive Lounge',
     category: 'Commercial Design',
     description: 'An executive relaxation hub designed with custom glass dividers, luxury mid-century seating collection, and subtle integrated LED lines.',
-    image: '/src/assets/images/commercial_lounge_1780882276745.png',
+    image: '/images/commercial_lounge_1780882276745.png',
     location: 'Clayton, MO',
     year: '2026'
   },
@@ -101,7 +101,7 @@ export const PROJECTS: Project[] = [
     title: 'Glen Carbon Minimalistic Master Suite',
     category: 'E-Design',
     description: 'Curated virtually with handpicked tactile linen textiles, warm modern accent light fixtures, and customized floating beige vanities.',
-    image: '/src/assets/images/edesign_bedroom_1780882294734.png',
+    image: '/images/edesign_bedroom_1780882294734.png',
     location: 'Glen Carbon, IL (Remote)',
     year: '2026'
   }
@@ -149,7 +149,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Design Guide',
     date: 'May 12, 2026',
     readTime: '4 min read',
-    image: '/src/assets/images/modern_living_room_1780882249127.png'
+    image: '/images/modern_living_room_1780882249127.png'
   },
   {
     id: 'blog2',
@@ -159,7 +159,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Remodeling Tips',
     date: 'April 28, 2026',
     readTime: '6 min read',
-    image: '/src/assets/images/kitchen_remodel_1780882262249.png'
+    image: '/images/kitchen_remodel_1780882262249.png'
   },
   {
     id: 'blog3',
@@ -169,7 +169,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'E-Design',
     date: 'March 15, 2026',
     readTime: '4 min read',
-    image: '/src/assets/images/edesign_bedroom_1780882294734.png'
+    image: '/images/edesign_bedroom_1780882294734.png'
   }
 ];
 
