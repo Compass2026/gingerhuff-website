@@ -26,8 +26,14 @@
 /* ─── Base styles ─────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 116px;
   background-color: #ffffff;
   color: #1c1c1a;
+}
+
+/* Reserve the contact strip's height above the existing navigation overlay. */
+#main-content {
+  padding-top: 44px;
 }
 
 body {
