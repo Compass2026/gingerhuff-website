@@ -347,7 +347,7 @@ export default function ContactSection() {
                       <span className="italic text-brand-500">{formData.name}</span>
                     </h3>
                     <p className="text-stone-700 max-w-md mx-auto text-xs sm:text-sm font-light leading-relaxed">
-                      Your inquiry has been sent to Ginger Huff Interiors. Our team will follow up using the contact details you provided. If you need to reach us sooner, call (618) 791-9113.
+                      Your inquiry has been received by Ginger Huff Interiors. Our team will follow up using the contact details you provided. If you need to reach us sooner, call (618) 791-9113.
                     </p>
                   </div>
 

@@ -3,7 +3,10 @@
   "trailingSlash": true,
   "functions": {
     "api/contact.ts": {
-      "maxDuration": 30
+      "maxDuration": 60
+    },
+    "api/inquiry-retry.ts": {
+      "maxDuration": 120
     }
   },
   "redirects": [
@@ -50,6 +53,12 @@
           "value": "SAMEORIGIN"
         }
       ]
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/inquiry-retry/",
+      "schedule": "*/5 * * * *"
     }
   ]
 }
