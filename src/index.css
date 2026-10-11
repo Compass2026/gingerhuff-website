@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Cormorant Garamond", serif;
-  --font-sans: "Plus Jakarta Sans", "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-serif: "Cormorant Garamond Variable", serif;
+  --font-sans: "Plus Jakarta Sans Variable", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono Variable", monospace;
 
   /* Ginger Huff 2.0 — bright, fresh lime-green accent */
   --color-brand-50:  #f5fceb;

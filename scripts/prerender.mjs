@@ -1,7 +1,9 @@
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { paths, render } from '../.prerender/entry-server.js';
-const template=await readFile('dist/index.html','utf8');
+const fontFiles = (await readdir('dist/assets')).filter(name => /^(cormorant-garamond|plus-jakarta-sans)-latin-wght-normal-.*\.woff2$/.test(name));
+const fontPreloads = fontFiles.map(name => `<link rel="preload" href="/assets/${name}" as="font" type="font/woff2" crossorigin>`).join('');
+const template=(await readFile('dist/index.html','utf8')).replace('</head>',fontPreloads+'</head>');
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 for(const path of paths){
  const {html,title,description,canonical,page}=render(path);
