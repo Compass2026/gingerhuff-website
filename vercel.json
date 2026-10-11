@@ -2,10 +2,34 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": true,
   "redirects": [
-    {"source":"/contact-2", "destination":"/contact/", "permanent":true},
-    {"source":"/category/:category", "destination":"/blog/", "permanent":true}
+    {
+      "source": "/contact-2/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/category/:category/",
+      "destination": "/blog/",
+      "permanent": true
+    }
   ],
   "headers": [
-    {"source":"/(.*)","headers":[{"key":"X-Content-Type-Options","value":"nosniff"},{"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},{"key":"X-Frame-Options","value":"SAMEORIGIN"}]}
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
   ]
 }

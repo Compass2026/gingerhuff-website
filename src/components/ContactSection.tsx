@@ -51,7 +51,7 @@ export default function ContactSection() {
     if (loading) return;
     setLoading(true); setError('');
     try {
-      const response = await fetch('/api/contact', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({...formData, startedAt}), signal: AbortSignal.timeout(20000) });
+      const response = await fetch('/api/contact/', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({...formData, startedAt}), signal: AbortSignal.timeout(20000) });
       const result = await response.json();
       if (!response.ok || result.ok !== true) throw new Error(result.error || 'Your inquiry could not be sent. Please try again or contact us directly.');
       setSubmitted(true);
