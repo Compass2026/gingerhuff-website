@@ -18,7 +18,7 @@ export default async function handler(req: Request, res: ServerResponse) {
  const fields = {name:120,email:254,phone:60,location:160,serviceType:160,investment:160,details:5000};
  const data:Record<string,string>={};
  for(const [key,max] of Object.entries(fields)) { const value=body[key]; if(typeof value!=='string' || value.length>max || (key!=='phone'&&!value.trim())) return reply(400,{error:'Please complete all required fields within the allowed length.'}); data[key]=value.trim(); }
- if(!emailPattern.test(data.email) || /[\r\n]/.test(data.email+data.name) || data.details.length<10) return reply(400,{error:'Please enter a valid email and at least 10 characters about your project.'});
+ if(!emailPattern.test(data.email) || /[\r\n]/.test(data.email+data.name)) return reply(400,{error:'Please enter a valid name and email address.'});
  const startedAt=Number(body.startedAt);
  if(!Number.isFinite(startedAt) || Date.now()-startedAt<2000 || Date.now()-startedAt>86400000) return reply(400,{error:'Please take a moment to review the form, or refresh the page if it has been open for a day.'});
  // Best-effort per-instance burst protection. Provider/firewall limits should also be enabled.

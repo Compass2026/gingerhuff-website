@@ -286,7 +286,6 @@ export default function ContactSection() {
                     </label>
                     <textarea
                       id="input-details"
-                      minLength={10}
                       maxLength={5000}
                       required
                       rows={4}
