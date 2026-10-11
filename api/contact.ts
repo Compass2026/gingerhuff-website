@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import type { IncomingMessage, ServerResponse } from 'node:http';
-import { acceptInquiry, deliverInquiry, crmConfig, digest, SubmissionConflict, type Store } from '../lib/inquiry-delivery.ts';
-import { blobStore } from '../lib/inquiry-store.ts';
+import { acceptInquiry, deliverInquiry, crmConfig, digest, SubmissionConflict, type Store } from '../lib/inquiry-delivery.js';
+import { blobStore } from '../lib/inquiry-store.js';
 import { waitUntil } from '@vercel/functions';
 type Request = IncomingMessage & { body?: unknown };
 const attempts = new Map<string, { count: number; until: number }>();

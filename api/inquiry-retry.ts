@@ -1,7 +1,7 @@
 import { timingSafeEqual } from 'node:crypto';
 import type { IncomingMessage, ServerResponse } from 'node:http';
-import { crmConfig, drainInquiries } from '../lib/inquiry-delivery.ts';
-import { blobStore, saveCursor } from '../lib/inquiry-store.ts';
+import { crmConfig, drainInquiries } from '../lib/inquiry-delivery.js';
+import { blobStore, saveCursor } from '../lib/inquiry-store.js';
 
 export function authorized(header: string | undefined, secret: string | undefined): boolean {
   if (!secret || !header) return false;

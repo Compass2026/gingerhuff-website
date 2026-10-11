@@ -1,5 +1,5 @@
 import { get, put, del, list } from '@vercel/blob';
-import type { Store } from './inquiry-delivery.ts';
+import type { Store } from './inquiry-delivery.js';
 
 export const blobStore: Store = {
   async read<T>(key: string): Promise<T | null> {
