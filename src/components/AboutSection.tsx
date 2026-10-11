@@ -1,3 +1,4 @@
+const launchImage0 = '/images/modern_living_room_1780882249127.webp';
 import { GINGER_HUFF_STORY } from '../data';
 import { Award, ShieldCheck, Heart, MapPin, Users, Flame, ArrowRight } from 'lucide-react';
 import { PageId } from '../types';
@@ -52,9 +53,9 @@ export default function AboutSection({ onNavigate }: AboutSectionProps) {
           {/* Asymmetric Image/Card Stack (Left - Col 7) */}
           <div className="lg:col-span-7 space-y-6 relative">
             <div className="relative rounded-2xl overflow-hidden border border-stone-100 group shadow-[0_4px_40px_rgba(0,0,0,0.10)]">
-              <img
-                src="/src/assets/images/modern_living_room_1780882249127.png"
-                alt="Ginger Huff Interiors Heritage Showroom"
+              <img loading="lazy" decoding="async"
+                src={launchImage0}
+                alt="Illustrative contemporary living room concept"
                 className="w-full h-[400px] sm:h-[500px] object-cover filter brightness-90 transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />

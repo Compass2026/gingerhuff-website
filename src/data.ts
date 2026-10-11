@@ -1,3 +1,7 @@
+const asset6 = '/images/commercial_lounge_1780882276745.webp';
+const asset4 = '/images/edesign_bedroom_1780882294734.webp';
+const asset3 = '/images/kitchen_remodel_1780882262249.webp';
+const asset2 = '/images/modern_living_room_1780882249127.webp';
 import { Service, Project, Testimonial, BlogPost, FAQItem } from './types';
 
 export const GINGER_HUFF_STORY = {
@@ -15,7 +19,7 @@ export const SERVICES: Service[] = [
     title: 'Home Interiors',
     shortDescription: 'Bespoke residential solutions meticulously tailored representing the absolute pinnacle of custom style.',
     description: 'Our premier residential service delivers completely personalized layout planning, color coordination, fine art advising, and tailored custom furniture, resulting in cohesive luxury that perfectly fits your day-to-day life.',
-    image: '/src/assets/images/modern_living_room_1780882249127.png',
+    image: asset2,
     features: [
       'Full-Scale Spatial Planning',
       'Custom Furniture Design & Fabric Sourcing',
@@ -29,7 +33,7 @@ export const SERVICES: Service[] = [
     title: 'Kitchen & Bath',
     shortDescription: 'Bespoke, timeless redesigns creating modern hubs of culinary luxury and serene spa-like relaxation.',
     description: 'We elevate kitchens and bathrooms from utility spaces to custom architectural highlights. We source gorgeous countertops, bespoke custom cabinetry, statement plumbing fixtures, and innovative space solutions.',
-    image: '/src/assets/images/kitchen_remodel_1780882262249.png',
+    image: asset3,
     features: [
       'Custom Cabinetry Design & Layouts',
       'Premium Solid-Surface & Marble Selection',
@@ -43,7 +47,7 @@ export const SERVICES: Service[] = [
     title: 'Commercial Design',
     shortDescription: 'Polished, contemporary corporate and boutique layouts centered on productivity, elegance, and brand identity.',
     description: 'Whether a stylish client-facing boutique, a luxury doctor’s office, or a modern corporate suite, we design layouts that inspire productivity, celebrate your brand, and leave your clients breathless.',
-    image: '/src/assets/images/commercial_lounge_1780882276745.png',
+    image: asset6,
     features: [
       'Brand Identity Interior Integration',
       'High-Durability Professional Furnishings',
@@ -57,7 +61,7 @@ export const SERVICES: Service[] = [
     title: 'E-Design & Virtual Consultation',
     shortDescription: 'Flexible, high-efficiency remote interior architectural planning delivered directly to your inbox.',
     description: 'Distance is no barrier to high-end luxury. Through our curated E-Design services, we deliver comprehensive, digital room plans, 3D photorealistic mockups, and clickable buying guides tailored to your budget and room measurements.',
-    image: '/src/assets/images/edesign_bedroom_1780882294734.png',
+    image: asset4,
     features: [
       'Interactive Room Layout Renderings (3D)',
       'Clickable Curated Shopping & Sourcing Guild',
@@ -71,63 +75,63 @@ export const SERVICES: Service[] = [
 export const PROJECTS: Project[] = [
   {
     id: 'proj1',
-    title: 'The Ladue Contemporary Estate',
+    title: 'Contemporary Living Room Concept',
     category: 'Home Interiors',
     description: 'A complete custom interior remodeling featuring breathtaking panoramic glass views, hand-selected Travertine fireplace surround, and bespoke silk velvet couches.',
-    image: '/src/assets/images/modern_living_room_1780882249127.png',
-    location: 'Ladue, MO',
-    year: '2025'
+    image: asset2,
+    location: 'Design inspiration',
+    year: 'Concept'
   },
   {
     id: 'proj2',
-    title: 'Edwardsville Modern Oak Kitchen',
+    title: 'Warm Oak Kitchen Concept',
     category: 'Kitchen & Bath',
-    description: 'Warm oak paneling combined with black soapstone slabs and glowing glass pendants to create an award-winning open atmosphere.',
-    image: '/src/assets/images/kitchen_remodel_1780882262249.png',
-    location: 'Edwardsville, IL',
-    year: '2025'
+    description: 'Warm oak paneling combined with black soapstone slabs and glowing glass pendants to create an welcoming open atmosphere.',
+    image: asset3,
+    location: 'Design inspiration',
+    year: 'Concept'
   },
   {
     id: 'proj3',
-    title: 'Clayton Corporate Executive Lounge',
+    title: 'Executive Lounge Concept',
     category: 'Commercial Design',
     description: 'An executive relaxation hub designed with custom glass dividers, luxury mid-century seating collection, and subtle integrated LED lines.',
-    image: '/src/assets/images/commercial_lounge_1780882276745.png',
-    location: 'Clayton, MO',
-    year: '2026'
+    image: asset6,
+    location: 'Design inspiration',
+    year: 'Concept'
   },
   {
     id: 'proj4',
-    title: 'Glen Carbon Minimalistic Master Suite',
+    title: 'Relaxed Bedroom Concept',
     category: 'E-Design',
     description: 'Curated virtually with handpicked tactile linen textiles, warm modern accent light fixtures, and customized floating beige vanities.',
-    image: '/src/assets/images/edesign_bedroom_1780882294734.png',
-    location: 'Glen Carbon, IL (Remote)',
-    year: '2026'
+    image: asset4,
+    location: 'Design inspiration',
+    year: 'Concept'
   }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: 'test1',
-    name: 'Katherine McDonald',
-    role: 'Homeowner, Clayton MO',
-    quote: 'Working with Ginger Huff Interiors was an absolute dream. As a three-generation team, they brought so much warmth, expertise, and precision to our home. They listened to every concern and delivered a living room that gets compliments from literally every single guest we host!',
-    stars: 5
+    "id": "test1",
+    "name": "Katherine McDonald",
+    "role": "Client testimonial",
+    "quote": "Ginger is AMAZING! She is so responsive and has such great ideas! She is very easy to work with. Her taste is so good and she has the resources to find anything you need!!!",
+    "stars": 5
   },
   {
-    id: 'test2',
-    name: 'Debbie Weinacht',
-    role: 'Executive Director, St. Louis IL',
-    quote: 'The team handled our boutique design with impeccable professionalism. They completely understood how to blend high-end executive comfort with clean, commercial-grade materials. The glass accents they recommended have changed the entire flow of our workspace. Absolutely superb!',
-    stars: 5
+    "id": "test2",
+    "name": "Debbie Weinacht",
+    "role": "Client testimonial",
+    "quote": "I have worked with Ginger for a number of years. She has impeccable taste in her design work. She has a keen eye for paint color. She has done work at my home and my office. We always get compliments. I would recommend Ginger on any size project someone would have. You won't be disappointed.",
+    "stars": 5
   },
   {
-    id: 'test3',
-    name: 'C. S.',
-    role: 'Residential Client, Edwardsville IL',
-    quote: 'They spent so much time making sure our custom kitchen remodel met our needs, and they had wonderful relationships with the best cabinetmakers in the area. Ginger Huff and her daughter are true visionary artists, and their 30+ year reputation shows in every minor detail.',
-    stars: 5
+    "id": "test3",
+    "name": "CS",
+    "role": "Client testimonial",
+    "quote": "Ginger is great! She is extremely professional, responsive, and talented. She pays great attention to detail and makes sure that everything is done according to plan. I am very lucky to have found her for our quick-turnaround bath, kitchen, and living room remodeling jobs and will most certainly look to her for all future remodeling projects!",
+    "stars": 5
   }
 ];
 
@@ -140,38 +144,7 @@ export const BRANDS = [
   { name: 'Restoration Hardware', logo: 'RH' }
 ];
 
-export const BLOG_POSTS: BlogPost[] = [
-  {
-    id: 'blog1',
-    title: 'The Art of Mixing Design Eras: Luxury Antiques Meet Modern Glassmorphism',
-    excerpt: 'How our three generations of interior designers combine family heirloom craftsmanship with contemporary glass, metal, and light overlays.',
-    content: 'Interiors should feel collected over decades, not ordered from a single catalog. Our core design ethos revolves around creating high-contrast relationships between textures: think high-gloss polished marble placed alongside rough-sawn natural oak boards, or a vintage heirloom console placed underneath a modern glassmorphic frosted shelf with built-in soft LED lighting. In this blog, we explore our favorite techniques to weave three generations of interior design lessons into contemporary home interiors.',
-    category: 'Design Guide',
-    date: 'May 12, 2026',
-    readTime: '4 min read',
-    image: '/src/assets/images/modern_living_room_1780882249127.png'
-  },
-  {
-    id: 'blog2',
-    title: '5 Crucial Secrets to a Functional, Luxurious Kitchen Layout & Custom Cabinets',
-    excerpt: 'Before launching your kitchen remodel, discover how we coordinate flow, lighting placement, and bespoke carpentry to maximize both beauty and utility.',
-    content: 'The kitchen is the absolute center of gravity of the modern home. Many homeowners get distracted by choosing counter stones first, but true gourmet kitchen architecture begins with structural workflow (the kitchen triangle) and detailed cabinetry layouts. Custom cabinet designs allow you to conceal high-volume appliances while creating magnificent focal pillars of white oak or custom lacquered finishes, matching exactly with premium brushed brass hardware.',
-    category: 'Remodeling Tips',
-    date: 'April 28, 2026',
-    readTime: '6 min read',
-    image: '/src/assets/images/kitchen_remodel_1780882262249.png'
-  },
-  {
-    id: 'blog3',
-    title: 'Expanding Your Vision: How Virtual E-Design Brings Luxury Directly to Your Inbox',
-    excerpt: 'Do you live outside the St. Louis area? Experience our high-end, bespoke interior planning from local comfort with digital 3D rendering consults.',
-    content: 'Not everyone has the time or geographical availability for traditional full-scale in-person construction consulting. E-design is our answer for high-efficiency design. We ship high-resolution 3D layouts, handpicked physical textile swap lists directly to your door, and present a clickable digital spreadsheet sourcing list so you can purchase products on your timeline at trade discounts we pass straight to you.',
-    category: 'E-Design',
-    date: 'March 15, 2026',
-    readTime: '4 min read',
-    image: '/src/assets/images/edesign_bedroom_1780882294734.png'
-  }
-];
+export { BLOG_POSTS } from './content/articles';
 
 export const FAQ_ITEMS: FAQItem[] = [
   {

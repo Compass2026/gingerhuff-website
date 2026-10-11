@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useEffect, useState, FormEvent } from 'react';
 import { Send, CheckCircle, Mail, Phone, MapPin, Sparkles, Clock } from 'lucide-react';
 
 export default function ContactSection() {
@@ -8,11 +8,14 @@ export default function ContactSection() {
     phone: '',
     location: 'Edwardsville, IL',
     serviceType: 'Home Interiors',
-    investment: '$10,000 - $25,000',
+    investment: 'Not sure yet',
     details: '',
-    newsletter: true
+    website: ''
   });
 
+  const [error, setError] = useState('');
+  const [startedAt, setStartedAt] = useState(0);
+  useEffect(() => { setStartedAt(Date.now()); }, []);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -30,10 +33,12 @@ export default function ContactSection() {
     'Kitchen & Bath',
     'Commercial Design',
     'E-Design & Virtual Consultation',
+    'Window Treatments',
     'Other Custom Design Sourcing'
   ];
 
   const budgetRanges = [
+    'Not sure yet',
     'Under $10,000 (Consulting / Accessories)',
     '$10,000 - $25,000 (Single Room Remodel)',
     '$25,000 - $50,000 (Multi-Room Update)',
@@ -41,15 +46,17 @@ export default function ContactSection() {
     'Over $100,000 (Full Home / New Build Consultation)'
   ];
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-
-    // Simulate high-end presentation submission with instant visual feedback
-    setTimeout(() => {
-      setLoading(false);
+    if (loading) return;
+    setLoading(true); setError('');
+    try {
+      const response = await fetch('/api/contact', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({...formData, startedAt}), signal: AbortSignal.timeout(20000) });
+      const result = await response.json();
+      if (!response.ok || result.ok !== true) throw new Error(result.error || 'Your inquiry could not be sent. Please try again or contact us directly.');
       setSubmitted(true);
-    }, 1200);
+    } catch (error) { setError(error instanceof Error && error.name !== 'TimeoutError' ? error.message : 'We could not confirm delivery. Please try again or email ghi@gingerhuffinteriors.com.'); }
+    finally { setLoading(false); }
   };
 
   return (
@@ -75,7 +82,7 @@ export default function ContactSection() {
             </div>
 
             <p className="text-stone-600 text-sm sm:text-base font-light leading-relaxed">
-              We pass our thirty years of legacy directly down into your home remodeling project. Complete our brief spatial intake questionnaire. Or, reach out via phone/email for direct inquiries.
+              Tell us about your space, your ideas, and what you would like to change. You can also reach Ginger directly by phone or email.
             </p>
 
             {/* Direct Info list card */}
@@ -86,13 +93,13 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
-                    Electronic Consultation
+                    Email
                   </h4>
                   <a
-                    href="mailto:design@gingerhuffinteriors.com"
+                    href="mailto:ghi@gingerhuffinteriors.com"
                     className="text-stone-800 hover:text-brand-500 text-sm sm:text-base font-light transition-colors"
                   >
-                    design@gingerhuffinteriors.com
+                    ghi@gingerhuffinteriors.com
                   </a>
                 </div>
               </div>
@@ -103,13 +110,13 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
-                    Telephone Line
+                    Phone
                   </h4>
                   <a
-                    href="tel:6186561111"
+                    href="tel:6187919113"
                     className="text-stone-800 hover:text-brand-500 text-sm sm:text-base font-light transition-colors"
                   >
-                    (618) 656-1111
+                    (618) 791-9113
                   </a>
                 </div>
               </div>
@@ -120,7 +127,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
-                    Regional Headquarters
+                    Service Area
                   </h4>
                   <p className="text-stone-700 text-sm sm:text-base font-light">
                     Edwardsville & Clayton, St. Louis Metro Area
@@ -134,11 +141,10 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
-                    Presentation Availability
+                    Availability
                   </h4>
                   <p className="text-stone-700 text-sm sm:text-base font-light">
-                    Monday — Friday: 9:00 AM – 5:00 PM <br />
-                    Saturday: By Appointment Only
+                    Monday through Saturday: 9:00 AM to 5:00 PM
                   </p>
                 </div>
               </div>
@@ -147,7 +153,7 @@ export default function ContactSection() {
             {/* Micro badge of credibility */}
             <div className="flex items-center gap-2 text-xs text-stone-400 pl-2">
               <Sparkles className="w-4 h-4 text-brand-500" />
-              <span>Free 15-minute phone alignment included on submission.</span>
+              <span>Let’s begin with a complimentary consultation.</span>
             </div>
           </div>
 
@@ -156,16 +162,20 @@ export default function ContactSection() {
             <div className="glass-card rounded-[32px] p-6 sm:p-10 md:p-12 border border-white/12 shadow-2xl relative">
               
               {!submitted ? (
+                <>
+                <noscript><p>Please email ghi@gingerhuffinteriors.com or call 618-791-9113 to inquire. The form requires JavaScript.</p></noscript>
                 <form id="contact-intake-form" onSubmit={handleSubmit} className="space-y-6">
                   
                   {/* Two-Column Name & Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="input-name" className="text-xs uppercase tracking-wider text-stone-600 font-mono">
-                        Guest Name *
+                        Your Name *
                       </label>
                       <input
                         id="input-name"
+                        autoComplete="name"
+                        maxLength={120}
                         type="text"
                         required
                         value={formData.name}
@@ -181,6 +191,8 @@ export default function ContactSection() {
                       </label>
                       <input
                         id="input-email"
+                        autoComplete="email"
+                        maxLength={254}
                         type="email"
                         required
                         value={formData.email}
@@ -191,13 +203,15 @@ export default function ContactSection() {
                     </div>
                   </div>
 
-                  {/* Telephone Line */}
+                  {/* Phone */}
                   <div className="space-y-2">
                     <label htmlFor="input-phone" className="text-xs uppercase tracking-wider text-stone-600 font-mono">
                       Telephone Number
                     </label>
                     <input
                       id="input-phone"
+                      autoComplete="tel"
+                      maxLength={60}
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -209,7 +223,7 @@ export default function ContactSection() {
                   {/* Location Selection Dropdown */}
                   <div className="space-y-2">
                     <label htmlFor="input-location" className="text-xs uppercase tracking-wider text-stone-600 font-mono">
-                      Remodeling physical Location *
+                      Project Location *
                     </label>
                     <select
                       id="input-location"
@@ -228,7 +242,7 @@ export default function ContactSection() {
                   {/* Service type Selection */}
                   <div className="space-y-2">
                     <label htmlFor="input-service" className="text-xs uppercase tracking-wider text-stone-600 font-mono">
-                      Design Practice Area Needed *
+                      Service Interested In *
                     </label>
                     <select
                       id="input-service"
@@ -247,7 +261,7 @@ export default function ContactSection() {
                   {/* Plan Budget selection */}
                   <div className="space-y-2">
                     <label htmlFor="input-investment" className="text-xs uppercase tracking-wider text-stone-600 font-mono">
-                      Project Allocation Bracket *
+                      Estimated Project Budget *
                     </label>
                     <select
                       id="input-investment"
@@ -266,10 +280,12 @@ export default function ContactSection() {
                   {/* Project Details */}
                   <div className="space-y-2">
                     <label htmlFor="input-details" className="text-xs uppercase tracking-wider text-stone-600 font-mono">
-                      Describe your layout Goals, Timelines, & Ideas *
+                      Tell Us About Your Project *
                     </label>
                     <textarea
                       id="input-details"
+                      minLength={10}
+                      maxLength={5000}
                       required
                       rows={4}
                       value={formData.details}
@@ -279,55 +295,44 @@ export default function ContactSection() {
                     />
                   </div>
 
-                  {/* Newsletter tick */}
-                  <div className="flex items-center gap-3 select-none">
-                    <input
-                      id="input-newsletter"
-                      type="checkbox"
-                      checked={formData.newsletter}
-                      onChange={(e) => setFormData({ ...formData, newsletter: e.target.checked })}
-                      className="w-4.5 h-4.5 accent-brand-500 rounded border-stone-100 cursor-pointer"
-                    />
-                    <label htmlFor="input-newsletter" className="text-[12px] text-stone-600 font-light cursor-pointer">
-                      I want to subscribe to Ginger's quarterly Design Journal tips.
-                    </label>
-                  </div>
-
+                  <div className="form-honeypot" aria-hidden="true"><label htmlFor="input-website">Leave this field empty</label><input id="input-website" name="website" tabIndex={-1} autoComplete="off" value={formData.website} onChange={e=>setFormData({...formData,website:e.target.value})}/></div>
+                  <p className="text-sm text-stone-600">We use your information to respond to this inquiry. <a href="/privacy/" className="underline text-brand-700">Privacy notice</a></p>
+                  {error && <p role="alert" className="rounded-xl border border-red-200 bg-red-50 text-red-800 p-4 text-sm">{error}</p>}
                   {/* Submission triggers */}
                   <button
                     id="submit-intake-btn"
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold py-4 rounded-xl text-xs uppercase tracking-widest transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-55 disabled:pointer-events-none flex items-center justify-center gap-2 group cursor-pointer shadow-lg shadow-brand-500/20"
+                    className="w-full bg-brand-500 hover:bg-brand-600 text-stone-900 font-semibold py-4 rounded-xl text-xs uppercase tracking-widest transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-55 disabled:pointer-events-none flex items-center justify-center gap-2 group cursor-pointer shadow-lg shadow-brand-500/20"
                   >
                     {loading ? (
                       <span className="w-5 h-5 rounded-full border-2 border-black border-t-transparent animate-spin inline-block"></span>
                     ) : (
                       <>
                         <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        Submit Request Presentation
+                        Send Inquiry
                       </>
                     )}
                   </button>
 
-                </form>
+                </form></>
               ) : (
                 /* Gorgeous success confirmation glass box */
-                <div id="contact-success-box" className="py-12 text-center space-y-6">
+                <div id="contact-success-box" role="status" aria-live="polite" className="py-12 text-center space-y-6">
                   <div className="w-20 h-20 bg-brand-500/10 border border-brand-500/30 rounded-full flex items-center justify-center mx-auto text-brand-500 animate-bounce">
                     <CheckCircle className="w-10 h-10" />
                   </div>
 
                   <div className="space-y-3">
                     <span className="text-[10px] uppercase font-mono tracking-[0.3em] text-brand-500 font-bold">
-                      Intake Successfully Received
+                      Inquiry Sent
                     </span>
                     <h3 className="font-serif text-3xl sm:text-4xl text-stone-900 font-light tracking-wide">
                       Thank You, <br />
                       <span className="italic text-brand-500">{formData.name}</span>
                     </h3>
                     <p className="text-stone-700 max-w-md mx-auto text-xs sm:text-sm font-light leading-relaxed">
-                      Your spatial remodeling intake form has been dispatched directly to the active designer inbox. One of our three-generation family operators will call you at <strong>{formData.phone || formData.email}</strong> within 1 business day for physical scheduling.
+                      Your inquiry has been sent to Ginger Huff Interiors. Our team will follow up using the contact details you provided. If you need to reach us sooner, call (618) 791-9113.
                     </p>
                   </div>
 
@@ -343,16 +348,16 @@ export default function ContactSection() {
                   <button
                     id="contact-reset-btn"
                     onClick={() => {
-                      setSubmitted(false);
+                      setSubmitted(false); setError(''); setStartedAt(Date.now());
                       setFormData({
                         name: '',
                         email: '',
                         phone: '',
                         location: 'Edwardsville, IL',
                         serviceType: 'Home Interiors',
-                        investment: '$10,000 - $25,000',
+                        investment: 'Not sure yet',
                         details: '',
-                        newsletter: true
+                        website: ''
                       });
                     }}
                     className="glass border-white/20 text-stone-700 hover:text-stone-900 px-5 py-2 rounded-xl text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer"

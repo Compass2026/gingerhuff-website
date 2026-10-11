@@ -72,7 +72,7 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
                 Need Trade Pricing?
               </h5>
               <p className="text-[12px] text-stone-500 leading-relaxed font-light">
-                We maintain direct trade relationships with Ballard Designs, Pottery Barn, Sherwin Williams, and elite boutique fabric houses. We pass our trade benefits straight to you.
+                We maintain direct trade relationships with Ballard Designs, Pottery Barn, Sherwin Williams, and elite boutique fabric houses. We help you explore furnishings and finishes suited to your project.
               </p>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
                 <div className="space-y-6 flex flex-col justify-between">
                   {/* Photo Display */}
                   <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-16/10 border border-stone-100 group">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={selectedService.image}
                       alt={selectedService.title}
                       className="w-full h-full object-cover filter brightness-90 transition-transform duration-700 group-hover:scale-105"
@@ -146,28 +146,15 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
                       </div>
                       <div className="space-y-1">
                         <h4 className="text-xs uppercase tracking-wider text-stone-700 font-semibold flex items-center gap-2">
-                          IG & Social Showcase Hook
+                          Follow Along With Ginger
                         </h4>
                         <p className="text-[11px] text-stone-500 leading-relaxed font-light">
-                          Perfect spot to embed Ginger's recent TikTok/Instagram walk-through video or local MP4 files. 
+                          Explore design ideas and updates from Ginger Huff Interiors. 
                         </p>
                       </div>
                     </div>
 
-                    {/* Facebook Page Embed */}
-                    <div className="mt-4 rounded-xl overflow-hidden border border-stone-100" style={{ minHeight: 400 }}>
-                      <iframe
-                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FGingerHuffInteriors&tabs=timeline&width=340&height=400&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false"
-                        width="100%"
-                        height="400"
-                        style={{ border: 'none', overflow: 'hidden', display: 'block' }}
-                        scrolling="no"
-                        frameBorder="0"
-                        allowFullScreen
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                        title="Ginger Huff Interiors on Facebook"
-                      />
-                    </div>
+                    <a className="inline-block mt-4 underline text-brand-700" href="https://www.facebook.com/gingerhuffinteriors/" target="_blank" rel="noreferrer">Visit our Facebook page</a>
                   </div>
 
                 </div>

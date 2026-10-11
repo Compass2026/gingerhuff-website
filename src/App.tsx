@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import PrivacyPage from './components/PrivacyPage';
+import { PAGE_PATHS, resolveRoute } from './routing';
 import { PageId } from './types';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -18,21 +19,22 @@ import WindowTreatmentsPage from './components/WindowTreatmentsPage';
 import BrandTicker from './components/BrandTicker';
 import { Mail, Phone, MapPin, Instagram, Facebook, Award, ArrowUp, Sparkles } from 'lucide-react';
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageId>('home');
+export default function App({initialPath = '/'}: {initialPath?: string}) {
+  const {page: currentPage, article} = resolveRoute(initialPath);
 
   const handleNavigate = (page: PageId) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.location.assign(PAGE_PATHS[page]);
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-stone-800 selection:bg-brand-300 selection:text-stone-900">
-      {/* Sticky Luminous Glassmorphic Navbar */}
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      {/* Main navigation */}
       <Navbar currentPage={currentPage} setCurrentPage={handleNavigate} />
 
-      {/* Main Content Area - Render based on state with subtle entering transitions */}
-      <main className="flex-grow transition-opacity duration-500 animate-fade-in">
+      {/* Each route is prerendered and served at its own URL. */}
+      <main id="main-content" tabIndex={-1} className="flex-grow">
+        {['about','services','faq','contact'].includes(currentPage) && <h1 className="sr-only">{{about:'About Ginger Huff Interiors',services:'Interior Design Services',faq:'Interior Design Frequently Asked Questions',contact:'Contact Ginger Huff Interiors'}[currentPage]}</h1>}
         {currentPage === 'home' && (
           <div className="space-y-0">
             {/* 1. Cinematic Hero Header */}
@@ -75,7 +77,7 @@ export default function App() {
         )}
 
         {currentPage === 'blog' && (
-          <BlogSection />
+          <BlogSection article={article} />
         )}
 
         {currentPage === 'faq' && (
@@ -85,6 +87,8 @@ export default function App() {
         {currentPage === 'contact' && (
           <ContactSection />
         )}
+        {currentPage === 'privacy' && <PrivacyPage />}
+        {currentPage === 'not-found' && <section className="pt-36 pb-24 px-6 max-w-3xl mx-auto"><h1 className="font-serif text-5xl mb-6">Page not found</h1><p className="mb-6">This page may have moved. Explore our services or get in touch with Ginger.</p><a href="/" className="underline text-brand-700">Return home</a></section>}
       </main>
 
       {/* Luxury, High-End Glassmorphic Footer */}
@@ -98,7 +102,7 @@ export default function App() {
             {/* Branding Column - Col 4 */}
             <div className="lg:col-span-4 space-y-6">
               <div className="flex items-center gap-3">
-                <img
+                <img loading="lazy" decoding="async"
                   src="/logos/Ginger Huff Interiors Logo.webp"
                   alt="Ginger Huff Interiors"
                   className="w-10 h-10 rounded-full object-contain shrink-0"
@@ -171,7 +175,7 @@ export default function App() {
                     onClick={() => handleNavigate('portfolio')}
                     className="text-white/55 hover:text-brand-300 transition-colors cursor-pointer"
                   >
-                    Filtration Portfolio
+                    Design Inspiration
                   </button>
                 </li>
                 <li>
@@ -254,13 +258,13 @@ export default function App() {
 
               <div className="pt-2">
                 <p className="text-[10px] text-white/45 uppercase tracking-widest font-mono">
-                  Direct Sourcing Cell
+                  Call Ginger
                 </p>
                 <a
-                  href="tel:6186561111"
+                  href="tel:6187919113"
                   className="text-sm font-semibold text-brand-300 hover:text-brand-400 block mt-1 transition-colors"
                 >
-                  (618) 656-1111
+                  (618) 791-9113
                 </a>
               </div>
             </div>
@@ -274,17 +278,17 @@ export default function App() {
             </p>
             <div className="flex items-center gap-4 text-[10px] uppercase tracking-wider text-white/40 font-mono">
               <button
-                onClick={() => handleNavigate('faq')}
+                onClick={() => handleNavigate('privacy')}
                 className="hover:text-brand-400 transition-colors cursor-pointer"
               >
-                Remodeling Terms
+                Privacy Notice
               </button>
               <span className="text-white/15">|</span>
               <button
                 onClick={() => handleNavigate('contact')}
                 className="hover:text-brand-400 transition-colors cursor-pointer"
               >
-                Inquire Presentation
+                Contact Us
               </button>
             </div>
           </div>

@@ -13,6 +13,8 @@ export default function Hero({ onNavigate }: HeroProps) {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.pause(); return; }
+    if (v.readyState >= 3) setLoaded(true);
     const onCanPlay = () => setLoaded(true);
     v.addEventListener('canplay', onCanPlay);
     return () => v.removeEventListener('canplay', onCanPlay);
@@ -36,6 +38,8 @@ export default function Hero({ onNavigate }: HeroProps) {
         ref={videoRef}
         id="hero-bg-video"
         autoPlay
+        aria-hidden="true"
+        preload="metadata"
         muted
         loop
         playsInline
@@ -99,7 +103,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               boxShadow: '0 8px 32px rgba(168,216,64,0.35)',
             }}
           >
-            View Our Work
+            Explore Design Ideas
             <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
           </button>
 

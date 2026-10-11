@@ -152,3 +152,20 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Launch accessibility and readable light surfaces. */
+:focus-visible { outline: 3px solid #435a12 !important; outline-offset: 4px; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; padding: 12px 20px; background: white; color: #1c1c1a; }
+.skip-link:focus { top: 8px; }
+.form-honeypot { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+.article-content { color:#44403c; font-size:1.05rem; line-height:1.85; overflow-wrap:anywhere; }
+.article-content p,.article-content ul { margin:1.3rem 0; }
+.article-content h2 { font-family:var(--font-serif); font-size:1.9rem; line-height:1.2; color:#1c1917; margin:2.3rem 0 1rem; }
+.article-content ul { list-style:disc; padding-left:1.5rem; }
+.article-content a { text-decoration:underline; color:#435a12; }
+section .text-brand-500,section .text-brand-400 { color:#5d7c18; }
+section .text-stone-400 { color:#78716c; }
+#contact-section a { overflow-wrap:anywhere; }
+#contact-section .lg\:col-span-5,#contact-section .lg\:col-span-7 { min-width:0; }
+@media(max-width:480px) { #contact-section .glass { padding:1rem; } #global-footer { padding-left:1.25rem; padding-right:1.25rem; } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } #hero-bg-video { display:none; } }

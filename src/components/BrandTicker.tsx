@@ -46,7 +46,7 @@ export default function BrandTicker() {
               style={{ width: brand.width, height: 48 }}
               title={brand.name}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={brand.logo}
                 alt={brand.name}
                 className="max-h-full max-w-full object-contain"

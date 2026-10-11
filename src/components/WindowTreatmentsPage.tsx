@@ -1,3 +1,7 @@
+const launchImage3 = '/images/roman_shades_kitchen.webp';
+const launchImage2 = '/images/window_shutters_detail.webp';
+const launchImage1 = '/images/motorized_shades.webp';
+const launchImage0 = '/images/window_treatments_hero.webp';
 import { useState } from 'react';
 import {
   Check,
@@ -34,7 +38,7 @@ const TREATMENT_CATEGORIES = [
       'Custom hardware: rods, rings, and statement finials',
       'Professional measurement, fabrication & white-glove installation',
     ],
-    image: '/src/assets/images/window_treatments_hero.png',
+    image: launchImage0,
     badge: 'Signature Service',
   },
   {
@@ -51,7 +55,7 @@ const TREATMENT_CATEGORIES = [
       'Custom paint matching to any Sherwin Williams color',
       'Full-frame & café-style configurations available',
     ],
-    image: '/src/assets/images/window_shutters_detail.png',
+    image: launchImage2,
     badge: 'Most Requested',
   },
   {
@@ -60,15 +64,15 @@ const TREATMENT_CATEGORIES = [
     icon: Smartphone,
     headline: 'Motorized & Smart Home Shades',
     description:
-      'As a certified Hunter Douglas PowerView® dealer, we integrate cutting-edge motorized shading into your smart home ecosystem. Control every window in your home with a tap, voice command, or automated schedule — effortlessly elegant.',
+      'We help you explore motorized shading options for your home. Control every window in your home with a tap, voice command, or automated schedule — effortlessly elegant.',
     features: [
-      'Hunter Douglas PowerView® Automation certified installer',
+      'Hunter Douglas PowerView® Automation options',
       'Compatible with Alexa, Google Home, Apple HomeKit, Control4',
       'Scene programming: Morning Rise, Movie Mode, Privacy settings',
       'Solar, blackout, and woven wood motorized options',
       'Battery, hardwired, and rechargeable motor systems',
     ],
-    image: '/src/assets/images/motorized_shades.png',
+    image: launchImage1,
     badge: 'Hunter Douglas Partner',
   },
   {
@@ -85,7 +89,7 @@ const TREATMENT_CATEGORIES = [
       'Custom sizing to the 1/8 inch for a perfect fit',
       'Woven wood, linen, velvet, and performance fabric options',
     ],
-    image: '/src/assets/images/roman_shades_kitchen.png',
+    image: launchImage3,
     badge: 'Most Versatile',
   },
 ];
@@ -106,7 +110,7 @@ const PROCESS_STEPS = [
   {
     step: '03',
     title: 'Professional Measurement',
-    desc: 'Every window is measured to the 1/8 inch by our certified team. Precision measurement is the foundation of a flawless finished product — never an afterthought.',
+    desc: 'Every window is measured to the 1/8 inch by our team. Precision measurement is the foundation of a flawless finished product — never an afterthought.',
     icon: Shield,
   },
   {
@@ -153,8 +157,8 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
       >
         {/* Hero background image */}
         <div className="absolute inset-0">
-          <img
-            src="/src/assets/images/window_treatments_hero.png"
+          <img loading="lazy" decoding="async"
+            src={launchImage0}
             alt="Custom luxury window treatments by Ginger Huff Interiors"
             className="w-full h-full object-cover opacity-60"
           />
@@ -274,7 +278,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
                   <span className="text-xs font-semibold uppercase tracking-wider text-[#96c52e] font-mono">Hunter Douglas Partner</span>
                 </div>
                 <p className="text-[12px] text-stone-500 leading-relaxed font-light">
-                  As a certified Hunter Douglas dealer, we offer trade-exclusive access to their full PowerView® motorization, Duette® honeycomb shades, and Silhouette® collections — unavailable at retail.
+                  Explore Hunter Douglas window treatment options with Ginger. We can help you compare styles, light control, and features suited to your space.
                 </p>
               </div>
             </div>
@@ -322,7 +326,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
 
                   {/* Image */}
                   <div className="relative rounded-2xl overflow-hidden shadow-xl border border-stone-100 group" style={{ minHeight: '360px' }}>
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={selected.image}
                       alt={selected.headline}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -428,10 +432,10 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl">
-                <img src="/src/assets/images/motorized_shades.png" alt="Motorized Hunter Douglas shades" className="w-full h-full object-cover" />
+                <img src={launchImage1} alt="Motorized Hunter Douglas shades" className="w-full h-full object-cover" />
               </div>
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl mt-8">
-                <img src="/src/assets/images/window_shutters_detail.png" alt="Plantation shutters detail" className="w-full h-full object-cover" />
+                <img src={launchImage2} alt="Plantation shutters detail" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -449,10 +453,10 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { src: '/src/assets/images/window_treatments_hero.png', caption: 'Custom Drapery · Ladue, MO' },
-              { src: '/src/assets/images/window_shutters_detail.png', caption: 'Plantation Shutters · Edwardsville, IL' },
-              { src: '/src/assets/images/motorized_shades.png', caption: 'Motorized Shades · Clayton, MO' },
-              { src: '/src/assets/images/roman_shades_kitchen.png', caption: 'Roman Shades · Town & Country, MO' },
+              { src: launchImage0, caption: 'Custom Drapery · Design inspiration' },
+              { src: launchImage2, caption: 'Plantation Shutters · Design inspiration' },
+              { src: launchImage1, caption: 'Motorized Shades · Design inspiration' },
+              { src: launchImage3, caption: 'Roman Shades · Design inspiration' },
             ].map((img, i) => (
               <div key={i} className="group relative rounded-2xl overflow-hidden shadow-md aspect-[3/4] border border-stone-100 hover:shadow-xl transition-shadow duration-500">
                 <img src={img.src} alt={img.caption} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -525,11 +529,11 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
               <ArrowRight className="w-4 h-4" />
             </button>
             <a
-              href="tel:6186561111"
+              href="tel:6187919113"
               id="wt-phone-cta"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-[0.18em] transition-all hover:bg-stone-100 cursor-pointer text-stone-800 border border-stone-200"
             >
-              Call (618) 656-1111
+              Call (618) 791-9113
             </a>
           </div>
         </div>

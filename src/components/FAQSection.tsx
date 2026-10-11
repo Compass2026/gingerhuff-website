@@ -7,7 +7,7 @@ export default function FAQSection() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [expandedId, setExpandedId] = useState<string | null>('faq1');
 
-  const categories = ['All', 'About the Firm', 'Location & Sourcing', 'Investment & Pricing', 'Process & Timelines'];
+  const categories = ['All', 'About the Firm', 'Location & Sourcing', 'Investment & Pricing', 'Process & Timelines', 'Getting Started'];
 
   const filteredFAQs = activeCategory === 'All'
     ? FAQ_ITEMS
@@ -71,6 +71,8 @@ export default function FAQSection() {
                 {/* Header Switcher */}
                 <button
                   id={`faq-accordion-toggle-${faq.id}`}
+                  aria-expanded={isExpanded}
+                  aria-controls={`faq-accordion-answer-box-${faq.id}`}
                   onClick={() => toggleAccordion(faq.id)}
                   className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                 >
@@ -90,8 +92,9 @@ export default function FAQSection() {
                 {/* Answer Box */}
                 <div
                   id={`faq-accordion-answer-box-${faq.id}`}
+                  hidden={!isExpanded}
                   className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                    isExpanded ? 'max-h-[300px] border-t border-stone-100' : 'max-h-0'
+                    isExpanded ? 'border-t border-stone-100' : 'max-h-0'
                   }`}
                 >
                   <div className="p-6 text-stone-700 text-xs sm:text-sm leading-relaxed font-light font-sans space-y-4">
@@ -114,10 +117,10 @@ export default function FAQSection() {
           <div className="inline-flex items-center gap-3 glass p-2.5 px-6 rounded-2xl border border-stone-100">
             <span className="text-xs text-stone-700">Message Ginger Huff directly:</span>
             <a
-              href="mailto:design@gingerhuffinteriors.com"
+              href="mailto:ghi@gingerhuffinteriors.com"
               className="text-xs font-semibold text-brand-500 hover:text-brand-500 underline tracking-wider uppercase font-mono"
             >
-              design@gingerhuffinteriors.com
+              ghi@gingerhuffinteriors.com
             </a>
           </div>
         </div>

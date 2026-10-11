@@ -1,4 +1,4 @@
-export type PageId = 'home' | 'about' | 'services' | 'window-treatments' | 'portfolio' | 'blog' | 'faq' | 'contact';
+export type PageId = 'home' | 'about' | 'services' | 'window-treatments' | 'portfolio' | 'blog' | 'faq' | 'contact' | 'privacy' | 'not-found';
 
 export interface Service {
   id: string;
@@ -28,6 +28,8 @@ export interface Testimonial {
 }
 
 export interface BlogPost {
+  slug: string;
+  author?: string;
   id: string;
   title: string;
   excerpt: string;
