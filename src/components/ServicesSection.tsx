@@ -10,7 +10,6 @@ interface ServicesSectionProps {
 export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
   const [activeTab, setActiveTab] = useState(SERVICES[0].id);
 
-  const selectedService = SERVICES.find((s) => s.id === activeTab) || SERVICES[0];
 
   return (
     <section id="services-section" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white">
@@ -46,6 +45,8 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
               <button
                 key={s.id}
                 id={`services-tab-${s.id}`}
+                aria-expanded={activeTab === s.id}
+                aria-controls={`service-panel-${s.id}`}
                 onClick={() => setActiveTab(s.id)}
                 className={`w-full text-left px-6 py-5 rounded-2xl border transition-all duration-500 cursor-pointer flex items-center justify-between group ${
                   activeTab === s.id
@@ -68,9 +69,9 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
             ))}
 
             <div className="glass p-6 rounded-2xl border border-stone-100 mt-8 space-y-4">
-              <h5 className="font-serif text-md text-brand-500 font-semibold uppercase tracking-wider">
+              <h3 className="font-serif text-md text-brand-500 font-semibold uppercase tracking-wider">
                 Need Trade Pricing?
-              </h5>
+              </h3>
               <p className="text-[12px] text-stone-500 leading-relaxed font-light">
                 We maintain direct trade relationships with Ballard Designs, Pottery Barn, Sherwin Williams, and elite boutique fabric houses. We help you explore furnishings and finishes suited to your project.
               </p>
@@ -79,7 +80,8 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
 
           {/* Active Detail Canvas (Right - Col 8) */}
           <div className="lg:col-span-8">
-            <div className="glass-card rounded-[32px] p-6 sm:p-10 border border-stone-100 shadow-2xl relative overflow-hidden">
+            {SERVICES.map((selectedService) => (
+            <div key={selectedService.id} id={`service-panel-${selectedService.id}`} hidden={activeTab !== selectedService.id} aria-labelledby={`services-tab-${selectedService.id}`} className="seo-panel glass-card rounded-[32px] p-6 sm:p-10 border border-stone-100 shadow-2xl relative overflow-hidden">
               {/* Luxury Accent Glow */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-brand-500/5 rounded-bl-full blur-2xl pointer-events-none"></div>
 
@@ -113,9 +115,9 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
                   </div>
 
                   <button
-                    id="service-cta-btn"
+                    id={`service-cta-${selectedService.id}`}
                     onClick={() => onNavigate('contact')}
-                    className="w-full bg-brand-500 hover:bg-brand-600 text-white py-4 rounded-xl text-xs font-semibold uppercase tracking-widest transition-all hover:-translate-y-0.5 shadow-md shadow-brand-500/20 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-brand-500 hover:bg-brand-600 text-stone-900 py-4 rounded-xl text-xs font-semibold uppercase tracking-widest transition-all hover:-translate-y-0.5 shadow-md shadow-brand-500/20 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Request consultation for {selectedService.title}
                   </button>
@@ -161,6 +163,7 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
 
               </div>
             </div>
+            ))}
           </div>
 
         </div>

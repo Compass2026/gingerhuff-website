@@ -144,8 +144,6 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
   const [activeTab, setActiveTab] = useState(TREATMENT_CATEGORIES[0].id);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const selected = TREATMENT_CATEGORIES.find((c) => c.id === activeTab) || TREATMENT_CATEGORIES[0];
-  const ActiveIcon = selected.icon;
 
   return (
     <div className="min-h-screen bg-white">
@@ -157,7 +155,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
       >
         {/* Hero background image */}
         <div className="absolute inset-0">
-          <img loading="lazy" decoding="async"
+          <img loading="eager" fetchPriority="high" decoding="async"
             src={launchImage0}
             alt="Custom luxury window treatments by Ginger Huff Interiors"
             className="w-full h-full object-cover opacity-60"
@@ -249,6 +247,8 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
                   <button
                     key={cat.id}
                     id={`wt-tab-${cat.id}`}
+                    aria-expanded={activeTab === cat.id}
+                    aria-controls={`wt-panel-${cat.id}`}
                     onClick={() => setActiveTab(cat.id)}
                     className={`w-full text-left px-6 py-5 rounded-2xl border transition-all duration-500 cursor-pointer flex items-center justify-between group ${
                       activeTab === cat.id
@@ -285,7 +285,9 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
 
             {/* Detail canvas */}
             <div className="lg:col-span-8">
-              <div className="glass-card rounded-[32px] p-6 sm:p-10 border border-stone-100 shadow-2xl relative overflow-hidden">
+              {TREATMENT_CATEGORIES.map((selected) => {
+              const ActiveIcon = selected.icon;
+              return <div key={selected.id} id={`wt-panel-${selected.id}`} hidden={activeTab !== selected.id} aria-labelledby={`wt-tab-${selected.id}`} className="seo-panel glass-card rounded-[32px] p-6 sm:p-10 border border-stone-100 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-48 h-48 rounded-bl-full blur-2xl pointer-events-none" style={{ background: 'rgba(168,216,64,0.05)' }} />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
@@ -333,13 +335,14 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
                     />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 p-5">
                       <span className="text-[10px] uppercase font-mono tracking-widest font-bold flex items-center gap-1" style={{ color: '#a8d840' }}>
-                        <Sparkles className="w-3 h-3" /> Project Showcase
+                        <Sparkles className="w-3 h-3" /> Design Inspiration
                       </span>
                       <p className="text-white/80 text-xs mt-0.5 font-light">{selected.headline}</p>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>;
+              })}
             </div>
           </div>
         </div>
@@ -446,9 +449,9 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
       <section id="wt-gallery" className="py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-[#96c52e] uppercase tracking-[0.25em] text-xs font-semibold font-mono">Installation Gallery</span>
+            <span className="text-[#96c52e] uppercase tracking-[0.25em] text-xs font-semibold font-mono">Design Inspiration</span>
             <h2 className="font-serif text-3xl sm:text-4xl text-stone-900 font-light tracking-tight mt-2">
-              Recent <span className="italic text-[#96c52e]">Projects</span>
+              Window Treatment <span className="italic text-[#96c52e]">Ideas</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -459,7 +462,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
               { src: launchImage3, caption: 'Roman Shades · Design inspiration' },
             ].map((img, i) => (
               <div key={i} className="group relative rounded-2xl overflow-hidden shadow-md aspect-[3/4] border border-stone-100 hover:shadow-xl transition-shadow duration-500">
-                <img src={img.src} alt={img.caption} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img loading="lazy" decoding="async" src={img.src} alt={img.caption} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
                   <span className="text-white text-xs font-light font-mono tracking-wide">{img.caption}</span>
                 </div>
@@ -487,6 +490,8 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
               >
                 <button
                   id={`wt-faq-${i}`}
+                  aria-expanded={openFaq === i}
+                  aria-controls={`wt-answer-${i}`}
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between px-7 py-6 text-left cursor-pointer"
                 >
@@ -495,12 +500,10 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
                     {openFaq === i ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                   </span>
                 </button>
-                {openFaq === i && (
-                  <div className="px-7 pb-6">
+                <div id={`wt-answer-${i}`} hidden={openFaq !== i} className="seo-panel px-7 pb-6">
                     <div className="h-px bg-stone-100 mb-4" />
                     <p className="text-stone-600 text-sm font-light leading-relaxed">{faq.a}</p>
                   </div>
-                )}
               </div>
             ))}
           </div>

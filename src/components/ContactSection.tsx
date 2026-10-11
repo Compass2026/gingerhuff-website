@@ -1,4 +1,5 @@
 import { useEffect, useState, FormEvent } from 'react';
+import { trackInquiry } from '../analytics';
 import { Send, CheckCircle, Mail, Phone, MapPin, Sparkles, Clock } from 'lucide-react';
 
 export default function ContactSection() {
@@ -55,6 +56,7 @@ export default function ContactSection() {
       const result = await response.json();
       if (!response.ok || result.ok !== true) throw new Error(result.error || 'Your inquiry could not be sent. Please try again or contact us directly.');
       setSubmitted(true);
+      trackInquiry();
     } catch (error) { setError(error instanceof Error && error.name !== 'TimeoutError' ? error.message : 'We could not confirm delivery. Please try again or email ghi@gingerhuffinteriors.com.'); }
     finally { setLoading(false); }
   };
@@ -92,9 +94,9 @@ export default function ContactSection() {
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
+                  <h3 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
                     Email
-                  </h4>
+                  </h3>
                   <a
                     href="mailto:ghi@gingerhuffinteriors.com"
                     className="text-stone-800 hover:text-brand-500 text-sm sm:text-base font-light transition-colors"
@@ -109,9 +111,9 @@ export default function ContactSection() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
+                  <h3 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
                     Phone
-                  </h4>
+                  </h3>
                   <a
                     href="tel:6187919113"
                     className="text-stone-800 hover:text-brand-500 text-sm sm:text-base font-light transition-colors"
@@ -126,9 +128,9 @@ export default function ContactSection() {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
+                  <h3 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
                     Service Area
-                  </h4>
+                  </h3>
                   <p className="text-stone-700 text-sm sm:text-base font-light">
                     Edwardsville & Clayton, St. Louis Metro Area
                   </p>
@@ -140,9 +142,9 @@ export default function ContactSection() {
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
+                  <h3 className="text-xs uppercase font-mono tracking-widest text-brand-500 mb-1">
                     Availability
-                  </h4>
+                  </h3>
                   <p className="text-stone-700 text-sm sm:text-base font-light">
                     Monday through Saturday: 9:00 AM to 5:00 PM
                   </p>

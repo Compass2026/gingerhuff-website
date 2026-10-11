@@ -139,60 +139,53 @@ export default function App({initialPath = '/'}: {initialPath?: string}) {
               </h4>
               <ul className="space-y-2.5 text-xs sm:text-sm font-light">
                 <li>
-                  <button
-                    onClick={() => handleNavigate('home')}
+                  <a href={PAGE_PATHS['home']}
                     className="text-white/55 hover:text-brand-300 transition-colors cursor-pointer"
                   >
                     Return Home Page
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => handleNavigate('about')}
+                  <a href={PAGE_PATHS['about']}
                     className="text-white/55 hover:text-brand-300 transition-colors cursor-pointer"
                   >
                     Our Family Story
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => handleNavigate('services')}
+                  <a href={PAGE_PATHS['services']}
                     className="text-white/55 hover:text-brand-300 transition-colors cursor-pointer"
                   >
                     Interior Packages
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => handleNavigate('window-treatments')}
+                  <a href={PAGE_PATHS['window-treatments']}
                     className="text-white/55 hover:text-brand-300 transition-colors cursor-pointer"
                   >
                     Window Treatments
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => handleNavigate('portfolio')}
+                  <a href={PAGE_PATHS['portfolio']}
                     className="text-white/55 hover:text-brand-300 transition-colors cursor-pointer"
                   >
                     Design Inspiration
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => handleNavigate('blog')}
+                  <a href={PAGE_PATHS['blog']}
                     className="text-white/55 hover:text-brand-300 transition-colors cursor-pointer"
                   >
                     Design Journal
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => handleNavigate('faq')}
+                  <a href={PAGE_PATHS['faq']}
                     className="text-white/55 hover:text-brand-300 transition-colors cursor-pointer"
                   >
                     Questions & Answers
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -277,19 +270,17 @@ export default function App({initialPath = '/'}: {initialPath?: string}) {
               &copy; {new Date().getFullYear()} Ginger Huff Interiors. All Rights Reserved. Family-owned and operated in Edwardsville & St. Louis metro.
             </p>
             <div className="flex items-center gap-4 text-[10px] uppercase tracking-wider text-white/40 font-mono">
-              <button
-                onClick={() => handleNavigate('privacy')}
+              <a href={PAGE_PATHS['privacy']}
                 className="hover:text-brand-400 transition-colors cursor-pointer"
               >
                 Privacy Notice
-              </button>
+              </a>
               <span className="text-white/15">|</span>
-              <button
-                onClick={() => handleNavigate('contact')}
+              <a href={PAGE_PATHS['contact']}
                 className="hover:text-brand-400 transition-colors cursor-pointer"
               >
                 Contact Us
-              </button>
+              </a>
             </div>
           </div>
 

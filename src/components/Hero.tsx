@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { PageId } from '../types';
 
@@ -7,17 +7,12 @@ interface HeroProps {
 }
 
 export default function Hero({ onNavigate }: HeroProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [loaded, setLoaded] = useState(false);
-
+  const [showVideo, setShowVideo] = useState(false);
   useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.pause(); return; }
-    if (v.readyState >= 3) setLoaded(true);
-    const onCanPlay = () => setLoaded(true);
-    v.addEventListener('canplay', onCanPlay);
-    return () => v.removeEventListener('canplay', onCanPlay);
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (!window.matchMedia('(min-width: 1024px) and (prefers-reduced-motion: no-preference)').matches || connection?.saveData) return;
+    const timer = window.setTimeout(() => setShowVideo(true), 2000);
+    return () => window.clearTimeout(timer);
   }, []);
 
   return (
@@ -25,32 +20,28 @@ export default function Hero({ onNavigate }: HeroProps) {
       id="hero-section"
       className="relative w-full h-screen min-h-[680px] max-h-[1080px] overflow-hidden"
     >
-      {/* ── Animated gradient fallback (always renders, video overlays on top) ─ */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: 'radial-gradient(ellipse at 30% 60%, #2a3020 0%, #1a1c17 40%, #0f110d 100%)',
-          animation: 'heroGradientShift 8s ease-in-out infinite alternate',
-        }}
+      <img
+        src="/hero-poster.webp"
+        alt=""
+        width="1400"
+        height="788"
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover"
       />
-      {/* ── Full-Bleed Video ─────────────────────────────── */}
-      <video
-        ref={videoRef}
+      {showVideo && <video
         id="hero-bg-video"
         autoPlay
         aria-hidden="true"
-        preload="metadata"
+        preload="none"
         muted
         loop
         playsInline
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-      >
-        {/* Locally hosted hero video */}
-        <source
-          src="/Prompt_A_seamless_cinematic.mp4"
-          type="video/mp4"
-        />
-      </video>
+        poster="/hero-poster.webp"
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/Prompt_A_seamless_cinematic.mp4"
+      />}
 
       {/* ── Gradient scrim — light on top, richer at bottom ─ */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/65 z-10" />
@@ -61,14 +52,14 @@ export default function Hero({ onNavigate }: HeroProps) {
       <div className="absolute inset-0 z-20 flex flex-col justify-end pb-20 px-8 sm:px-14 md:px-24 lg:px-32 max-w-[1400px] mx-auto left-0 right-0">
 
         {/* Eyebrow */}
-        <p className="eyebrow text-white/70 mb-5 animate-fade-up">
+        <p className="eyebrow text-white/70 mb-5">
           <span className="inline-block w-6 h-px bg-white/50 mr-3 align-middle" />
           St. Louis &amp; Edwardsville · Est. 1996
         </p>
 
         {/* Master headline */}
         <h1
-          className="font-serif font-light text-white leading-[1.08] tracking-tight mb-6 animate-fade-up-d1"
+          className="font-serif font-light text-white leading-[1.08] tracking-tight mb-6"
           style={{ fontSize: 'clamp(3rem, 7vw, 6.5rem)' }}
         >
           Spaces that feel<br />
@@ -79,7 +70,7 @@ export default function Hero({ onNavigate }: HeroProps) {
 
         {/* Sub-copy */}
         <p
-          className="text-white/75 font-light leading-relaxed mb-10 max-w-lg animate-fade-up-d2"
+          className="text-white/75 font-light leading-relaxed mb-10 max-w-lg"
           style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.15rem)' }}
         >
           Three generations of refined interior design. We translate your vision
@@ -87,7 +78,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-wrap items-center gap-4 animate-fade-up-d3">
+        <div className="flex flex-wrap items-center gap-4">
           {/* Primary — lime */}
           <button
             id="hero-portfolio-btn"

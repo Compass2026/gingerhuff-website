@@ -59,9 +59,9 @@ export default function TestimonialsSlider() {
 
             {/* Author details */}
             <div>
-              <h4 className="font-sans font-semibold text-sm uppercase tracking-[0.2em] text-brand-500">
+              <h3 className="font-sans font-semibold text-sm uppercase tracking-[0.2em] text-brand-500">
                 {activeTestimonial.name}
-              </h4>
+              </h3>
               <p className="text-xs text-stone-400 tracking-wider mt-1">
                 {activeTestimonial.role}
               </p>
@@ -85,11 +85,10 @@ export default function TestimonialsSlider() {
                 <button
                   key={idx}
                   onClick={() => setActiveIndex(idx)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
-                    activeIndex === idx ? 'w-8' : 'bg-stone-200 hover:bg-stone-300'
-                  }`}
+                  className="w-8 h-8 flex items-center justify-center cursor-pointer"
                   aria-label={`Go to slide ${idx + 1}`}
-                ></button>
+                  aria-pressed={activeIndex === idx}
+                ><span className={`h-2.5 rounded-full transition-all ${activeIndex === idx ? 'w-8 bg-brand-700' : 'w-2.5 bg-stone-400'}`} /></button>
               ))}
             </div>
 
