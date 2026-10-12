@@ -7,13 +7,26 @@ interface HeroProps {
 }
 
 export default function Hero({ onNavigate }: HeroProps) {
-  const [showVideo, setShowVideo] = useState(false);
+  // The poster is the LCP image; the video loads only after the page has, so it never delays first paint.
+  // Phones get a 9:16 crop (about 320 KB, no audio) instead of the 2.5 MB desktop file.
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [playing, setPlaying] = useState(false);
   useEffect(() => {
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-    if (!window.matchMedia('(min-width: 1024px) and (prefers-reduced-motion: no-preference)').matches || connection?.saveData) return;
-    const timer = window.setTimeout(() => setShowVideo(true), 2000);
-    return () => window.clearTimeout(timer);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || connection?.saveData) return;
+    const src = window.matchMedia('(min-width: 1024px)').matches ? '/Prompt_A_seamless_cinematic.mp4' : '/hero-mobile.mp4';
+    let timer = 0;
+    const start = () => { timer = window.setTimeout(() => setVideoSrc(src), 500); };
+    if (document.readyState === 'complete') start(); else window.addEventListener('load', start, { once: true });
+    return () => { window.removeEventListener('load', start); window.clearTimeout(timer); };
   }, []);
+  // iOS only autoplays inline video that is muted as a DOM property, which React's `muted` prop does not reliably set.
+  const startVideo = (video: HTMLVideoElement | null) => {
+    if (!video) return;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.play().catch(() => { /* Autoplay refused (e.g. iOS Low Power Mode): the poster stays visible. */ });
+  };
 
   return (
     <div
@@ -30,17 +43,18 @@ export default function Hero({ onNavigate }: HeroProps) {
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      {showVideo && <video
+      {videoSrc && <video
         id="hero-bg-video"
+        ref={startVideo}
         autoPlay
         aria-hidden="true"
-        preload="none"
+        preload="auto"
         muted
         loop
         playsInline
-        poster="/hero-poster.webp"
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/Prompt_A_seamless_cinematic.mp4"
+        onPlaying={() => setPlaying(true)}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${playing ? 'opacity-100' : 'opacity-0'}`}
+        src={videoSrc}
       />}
 
       {/* ── Gradient scrim — light on top, richer at bottom ─ */}

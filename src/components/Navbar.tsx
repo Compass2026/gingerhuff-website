@@ -17,7 +17,7 @@ export default function Navbar({ currentPage }: { currentPage: PageId; setCurren
  </div>
  </div>
  <div className="max-w-[1400px] mx-auto px-4 sm:px-8 flex items-center justify-between h-[72px] gap-4">
- <a href="/" className="flex items-center gap-3 shrink-0" aria-label="Ginger Huff Interiors home"><img src="/logos/Ginger Huff Interiors Logo.webp" width="36" height="36" alt=""/><span><span className="block font-serif text-xl tracking-widest">GINGER HUFF</span><span className="block text-[9px] tracking-[0.25em]">INTERIORS</span></span></a>
+ <a href="/" className="flex items-center gap-3 shrink-0" aria-label="Ginger Huff Interiors home"><img src="/logos/ghi-logo-128.webp" width="36" height="36" alt=""/><span><span className="block font-serif text-xl tracking-widest">GINGER HUFF</span><span className="block text-[9px] tracking-[0.25em]">INTERIORS</span></span></a>
  <div className="hidden xl:flex items-center gap-4">{links.map(([page,label])=><a key={page} href={PAGE_PATHS[page]} aria-current={page === currentPage ? 'page' : undefined} className="text-[11px] font-semibold uppercase tracking-wider py-3 hover:underline">{label}</a>)}</div>
  <a href="/contact/" className="hidden xl:block rounded-full bg-brand-400 text-stone-900 px-5 py-3 text-xs uppercase font-semibold">Consultation →</a>
  <button id="mobile-nav-toggle" aria-label={isOpen?'Close menu':'Open menu'} aria-expanded={isOpen} aria-controls="mobile-menu" className="xl:hidden p-3" onClick={()=>setIsOpen(!isOpen)}>{isOpen?<X/>:<Menu/>}</button>
