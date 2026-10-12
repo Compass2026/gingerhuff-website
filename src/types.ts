@@ -28,6 +28,12 @@ export interface Testimonial {
 }
 
 export interface BlogPost {
+  metaTitle?: string;
+  h1?: string;
+  datePublished?: string;
+  dateModified?: string;
+  cta?: { text: string; url: string | null };
+  compass?: { draft_id: string; release_hash: string; keyword_id: string; version: number };
   slug: string;
   author?: string;
   id: string;

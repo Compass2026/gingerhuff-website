@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "adapter": "json_blog",
+  "keyword_provenance": true,
+  "markdown": true,
+  "seo_fields": true
+}
