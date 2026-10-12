@@ -16,6 +16,7 @@ export const GINGER_HUFF_STORY = {
 export const SERVICES: Service[] = [
   {
     id: 'home-interiors',
+    detailPages: ['space-planning', 'color-consultation', 'interior-styling-decorating', 'home-makeovers', 'custom-furniture-design'],
     title: 'Home Interiors',
     shortDescription: 'Bespoke residential solutions meticulously tailored representing the absolute pinnacle of custom style.',
     description: 'Our premier residential service delivers completely personalized layout planning, color coordination, fine art advising, and tailored custom furniture, resulting in cohesive luxury that perfectly fits your day-to-day life.',
@@ -30,6 +31,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'kitchen-bath',
+    detailPages: ['kitchen-bath-design'],
     title: 'Kitchen & Bath',
     shortDescription: 'Bespoke, timeless redesigns creating modern hubs of culinary luxury and serene spa-like relaxation.',
     description: 'We elevate kitchens and bathrooms from utility spaces to custom architectural highlights. We source gorgeous countertops, bespoke custom cabinetry, statement plumbing fixtures, and innovative space solutions.',
@@ -44,6 +46,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'commercial-design',
+    detailPages: ['commercial-interior-design'],
     title: 'Commercial Design',
     shortDescription: 'Polished, contemporary corporate and boutique layouts centered on productivity, elegance, and brand identity.',
     description: 'Whether a stylish client-facing boutique, a luxury doctor’s office, or a modern corporate suite, we design layouts that inspire productivity, celebrate your brand, and leave your clients breathless.',
@@ -58,6 +61,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'edesign',
+    detailPages: ['e-design'],
     title: 'E-Design & Virtual Consultation',
     shortDescription: 'Flexible, high-efficiency remote interior architectural planning delivered directly to your inbox.',
     description: 'Distance is no barrier to high-end luxury. Through our curated E-Design services, we deliver comprehensive, digital room plans, 3D photorealistic mockups, and clickable buying guides tailored to your budget and room measurements.',

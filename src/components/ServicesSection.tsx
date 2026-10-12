@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { SERVICES } from '../data';
 import { Check, ArrowRight, Video, Sparkles, Image as ImageIcon, HelpCircle } from 'lucide-react';
 import { PageId } from '../types';
+import { SERVICE_PAGES, getServicePage, servicePagePath } from '../content/service-pages';
+import { PAGE_PATHS } from '../routing';
 
 interface ServicesSectionProps {
   onNavigate: (page: PageId) => void;
@@ -114,6 +116,21 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
                     </div>
                   </div>
 
+                  <div className="mb-6">
+                    <p className="text-[11px] uppercase tracking-widest text-brand-700 font-semibold mb-2">
+                      {selectedService.detailPages.length > 1 ? 'Explore these services' : 'Learn more'}
+                    </p>
+                    <ul className="flex flex-wrap gap-2">
+                      {selectedService.detailPages.map((id) => (
+                        <li key={id}>
+                          <a href={servicePagePath(id)} className="inline-flex items-center gap-1 rounded-full border border-brand-500/40 px-3 py-1.5 text-xs text-stone-800 hover:bg-brand-50 hover:border-brand-600 transition-colors">
+                            {getServicePage(id)?.name} <ArrowRight aria-hidden="true" className="w-3 h-3" />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
                   <button
                     id={`service-cta-${selectedService.id}`}
                     onClick={() => onNavigate('contact')}
@@ -167,6 +184,22 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
           </div>
 
         </div>
+
+        {/* Index of every service detail page, crawlable without opening a tab. */}
+        <nav aria-labelledby="service-index-heading" className="mt-20">
+          <h3 id="service-index-heading" className="font-serif text-2xl sm:text-3xl text-stone-900 font-light tracking-tight mb-6 text-center">
+            Explore each <span className="italic text-brand-600">service</span>
+          </h3>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-5xl mx-auto">
+            {[...SERVICE_PAGES.map((page) => ({ href: servicePagePath(page.id), label: page.name })), { href: PAGE_PATHS['window-treatments'], label: 'Custom Window Treatments' }].map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="flex items-center justify-between gap-3 glass rounded-2xl px-5 py-4 text-sm text-stone-800 hover:text-brand-800 hover:border-brand-500/40 transition-colors">
+                  {link.label} <ArrowRight aria-hidden="true" className="w-4 h-4 text-brand-600 shrink-0" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
       </div>
     </section>

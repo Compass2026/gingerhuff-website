@@ -1,4 +1,5 @@
-export type PageId = 'home' | 'about' | 'services' | 'window-treatments' | 'portfolio' | 'blog' | 'faq' | 'contact' | 'privacy' | 'not-found';
+import type { ServicePageId } from './content/service-pages';
+export type PageId = 'home' | 'about' | 'services' | 'window-treatments' | 'portfolio' | 'blog' | 'faq' | 'contact' | 'privacy' | 'not-found' | ServicePageId;
 
 export interface Service {
   id: string;
@@ -7,6 +8,8 @@ export interface Service {
   description: string;
   image: string;
   features: string[];
+  /** Detail pages for this practice area. */
+  detailPages: ServicePageId[];
 }
 
 export interface Project {
