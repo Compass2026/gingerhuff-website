@@ -17,10 +17,11 @@ import ContactSection from './components/ContactSection';
 import TestimonialsSlider from './components/TestimonialsSlider';
 import WindowTreatmentsPage from './components/WindowTreatmentsPage';
 import BrandTicker from './components/BrandTicker';
+import ServiceDetailPage from './components/ServiceDetailPage';
 import { Mail, Phone, MapPin, Instagram, Facebook, Award, ArrowUp, Sparkles } from 'lucide-react';
 
 export default function App({initialPath = '/'}: {initialPath?: string}) {
-  const {page: currentPage, article} = resolveRoute(initialPath);
+  const {page: currentPage, article, service} = resolveRoute(initialPath);
 
   const handleNavigate = (page: PageId) => {
     window.location.assign(PAGE_PATHS[page]);
@@ -71,6 +72,8 @@ export default function App({initialPath = '/'}: {initialPath?: string}) {
         {currentPage === 'window-treatments' && (
           <WindowTreatmentsPage onNavigate={handleNavigate} />
         )}
+
+        {service && <ServiceDetailPage page={service} />}
 
         {currentPage === 'portfolio' && (
           <PortfolioSection onNavigate={handleNavigate} />

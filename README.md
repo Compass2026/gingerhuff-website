@@ -8,7 +8,7 @@ React/Vite website with prerendered HTML routes and a Vercel serverless inquiry 
 - `npm run dev` (website only; /api/contact requires Vercel)
 - `npm run lint`
 - `npm test` (mocked delivery, validation, retry and failure cases; sends no real emails)
-- `npm run build` (optimizes source images, builds assets and prerenders 13 routes)
+- `npm run build` (optimizes source images, builds assets and prerenders every route, then checks service pages and internal links)
 
 ## Inquiry configuration
 

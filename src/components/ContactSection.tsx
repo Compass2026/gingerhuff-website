@@ -17,6 +17,11 @@ export default function ContactSection() {
   const [error, setError] = useState('');
   const [startedAt, setStartedAt] = useState(0);
   useEffect(() => { setStartedAt(Date.now()); }, []);
+  // Service pages link here with ?service=<form option> to preselect the matching service.
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get('service');
+    if (requested && serviceTypes.includes(requested)) setFormData(current => ({ ...current, serviceType: requested }));
+  }, []);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   // One id per inquiry, kept across retries of the same details so a retry

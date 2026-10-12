@@ -1,4 +1,5 @@
 import type { BlogPost } from '../types';
+import { SERVICE_PAGE_IDS } from './service-pages';
 
 type ReleasedArticle = {
   slug: string; title: string; description: string; metaTitle: string; h1: string;
@@ -7,7 +8,7 @@ type ReleasedArticle = {
   compass: { draft_id: string; release_hash: string; keyword_id: string; version: number };
 };
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const reserved = new Set(['about','services','window-treatments','portfolio','blog','faq','contact','privacy','404']);
+const reserved = new Set(['about','services','window-treatments','portfolio','blog','faq','contact','privacy','404',...SERVICE_PAGE_IDS]);
 
 /** Reject malformed releases at build time instead of shipping a partial article. */
 export function loadReleasedArticles(input: unknown, legacy: BlogPost[]): BlogPost[] {
