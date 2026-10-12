@@ -35,6 +35,8 @@ export interface ServicePageContent {
   /** Other existing pages worth linking from this one. */
   alsoSee?: { href: string; label: string; text: string }[];
   citation?: { text: string; source: string; href: string };
+  /** Optional extra section for a closely related offering, shown after "How Ginger helps". */
+  spotlight?: { eyebrow: string; heading: string; paragraphs: string[]; points: string[] };
   /** Must match an existing inquiry form service option. */
   inquiryService: string;
   crm: { serviceId: string; primaryKeywordId: string; primaryKeyword: string; supportingKeywords: string[] };
@@ -503,7 +505,7 @@ export const SERVICE_PAGES: ServicePageContent[] = [
     name: 'Home Makeovers & Room Redesign',
     summary: 'Refresh an existing room and decide what stays, what goes and what changes.',
     metaTitle: 'Home Makeovers and Room Redesign in Edwardsville',
-    description: 'Refresh a room without starting over. Home makeovers and room redesign in Edwardsville, IL, deciding what stays, what goes and what will make the biggest difference.',
+    description: 'Refresh a room without starting over, or get your home ready to sell. Home makeovers, room redesign and home staging in Edwardsville and the St. Louis metro.',
     eyebrow: 'Residential · Makeovers',
     h1: 'Home Makeovers and Room Redesign in Edwardsville',
     intro: [
@@ -517,6 +519,7 @@ export const SERVICE_PAGES: ServicePageContent[] = [
         'Homeowners who are tired of a room but do not want a full renovation.',
         'People whose lives have changed, such as a new baby, grown children or a home office, and whose rooms have not kept up.',
         'Anyone planning a whole-home refresh one room at a time.',
+        'Homeowners preparing to sell who want their home to show well.',
       ],
     },
     problems: {
@@ -538,6 +541,20 @@ export const SERVICE_PAGES: ServicePageContent[] = [
         'Where to focus first if you plan to refresh in stages.',
       ],
     },
+    spotlight: {
+      eyebrow: 'Selling your home',
+      heading: 'Home staging',
+      paragraphs: [
+        'Ginger Huff Interiors also stages homes for sale. Staging has a different goal from a makeover: instead of designing around how you live, it presents each room so buyers can picture themselves living there.',
+        'The same skills apply, from deciding what stays and what goes to arranging furniture and adding finishing touches, but every decision is made with buyers, listing photos and showings in mind.',
+      ],
+      points: [
+        'Edit each room so its purpose is clear and it feels open.',
+        'Arrange furniture to show off the size, light and best features of each space.',
+        'Keep colors and accessories simple so buyers notice the house, not the decor.',
+        'Start early, so the house is ready before listing photos are taken.',
+      ],
+    },
     guidance: {
       heading: 'Deciding what stays',
       intro: 'Before you buy anything new, sort what you have.',
@@ -552,6 +569,7 @@ export const SERVICE_PAGES: ServicePageContent[] = [
       { q: 'How is a makeover different from styling?', a: 'A makeover rethinks the room more broadly, including what stays, the layout and the overall look. Styling adds the finishing layer to a room whose furniture and layout already work.' },
       { q: 'Do I have to replace my furniture?', a: 'No. Keeping the pieces that work is central to a room redesign. The goal is to change what makes the biggest difference.' },
       { q: 'Can we refresh one room at a time?', a: 'Yes. Many homeowners start with the room they use most and continue through the house in stages.' },
+      { q: 'Do you offer home staging?', a: 'Yes. Ginger Huff Interiors stages homes for sale, as well as redesigning rooms for homeowners who are staying. Book a complimentary design consultation to talk through your home and when you plan to list it.' },
       { q: 'How do I get started?', a: 'Book a complimentary design consultation and share photos of the room as it is now, along with the pieces you hope to keep.' },
     ],
     related: ['space-planning', 'interior-styling-decorating', 'color-consultation'],
@@ -564,7 +582,7 @@ export const SERVICE_PAGES: ServicePageContent[] = [
     inquiryService: 'Home Interiors',
     crm: {
       serviceId: 'c8d45a19-73f6-5399-9b03-29dcf9fa0676', primaryKeywordId: 'f029d78c-ef5d-47e1-8c26-e8b40ff3cba2', primaryKeyword: 'home makeover edwardsville il',
-      supportingKeywords: ['home makeover', 'room redesign', 'room redesign edwardsville il'],
+      supportingKeywords: ['home makeover', 'room redesign', 'room redesign edwardsville il', 'home staging'],
     },
   },
 ];

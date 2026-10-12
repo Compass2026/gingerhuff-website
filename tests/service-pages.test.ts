@@ -70,3 +70,12 @@ test('blog releases cannot take a service page URL', () => {
   };
   for (const page of SERVICE_PAGES) assert.throws(() => loadReleasedArticles([{ ...release, slug: page.id }], []), /slug/);
 });
+
+test('home makeovers page covers the confirmed home staging service', () => {
+  const html = decode(render('/home-makeovers/'));
+  assert.ok(/<h2[^>]*id="service-spotlight-heading"[^>]*>Home staging<\/h2>/.test(html));
+  assert.ok(html.includes('Do you offer home staging?'));
+  assert.ok(pageMetadata('/home-makeovers/').description.includes('home staging'));
+  // Only pages with a spotlight render the section.
+  assert.ok(!render('/space-planning/').includes('service-spotlight-heading'));
+});
