@@ -32,8 +32,10 @@ test('invalid provenance, dangerous CTA, duplicate and reserved routes fail the 
   assert.throws(()=>loadReleasedArticles([{...article,cta:{text:'Bad',url:'javascript:alert(1)'}}],[]),/CTA/);
   assert.throws(()=>loadReleasedArticles([article],[{slug:article.slug} as any]),/duplicate/);
 });
-test('all four legacy article URLs remain intact, and no review draft is in public data',()=>{
-  assert.equal(BLOG_POSTS.length,4);
+test('all four legacy article URLs remain intact, and every published release resolves at its own URL',()=>{
+  // Approved Compass releases are added alongside the four legacy articles; they never replace them.
+  assert.equal(BLOG_POSTS.filter(post=>post.id.startsWith('published-')).length,4);
+  assert.equal(BLOG_POSTS.filter(post=>post.compass).length,BLOG_POSTS.length-4);
   for(const post of BLOG_POSTS){
     assert.equal(resolveRoute('/'+post.slug+'/').article?.id,post.id);
     assert.equal(pageMetadata('/'+post.slug+'/').canonical,'https://www.gingerhuffinteriors.com/'+post.slug+'/');

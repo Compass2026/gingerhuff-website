@@ -81,6 +81,28 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
         </div>
       </section>
 
+      {/* ── Related offering spotlight ───────────────────────── */}
+      {page.spotlight && (
+        <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-stone-100" aria-labelledby="service-spotlight-heading">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-7">
+              <p className="text-brand-700 uppercase tracking-[0.25em] text-xs font-semibold font-mono">{page.spotlight.eyebrow}</p>
+              <h2 id="service-spotlight-heading" className="font-serif text-3xl sm:text-4xl md:text-5xl text-stone-900 font-light tracking-tight mt-2 mb-5">{page.spotlight.heading}</h2>
+              {page.spotlight.paragraphs.map(paragraph => (
+                <p key={paragraph} className="text-stone-700 text-base font-light leading-relaxed mb-4">{paragraph}</p>
+              ))}
+            </div>
+            <ul className="lg:col-span-5 glass-card rounded-[28px] p-7 sm:p-9 space-y-4">
+              {page.spotlight.points.map(point => (
+                <li key={point} className="flex items-start gap-3 text-stone-700 text-sm font-light leading-relaxed">
+                  <Check aria-hidden="true" className="w-4 h-4 text-brand-600 mt-0.5 shrink-0" />{point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* ── Decision guidance ────────────────────────────────── */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
