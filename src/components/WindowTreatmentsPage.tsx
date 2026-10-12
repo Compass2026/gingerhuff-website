@@ -18,6 +18,7 @@ import {
   Star,
 } from 'lucide-react';
 import { PageId } from '../types';
+import { imageSrcSet } from '../images';
 
 interface WindowTreatmentsPageProps {
   onNavigate: (page: PageId) => void;
@@ -157,6 +158,8 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
         <div className="absolute inset-0">
           <img loading="eager" fetchPriority="high" decoding="async"
             src={launchImage0}
+            srcSet={imageSrcSet(launchImage0, 1024)}
+            sizes="100vw"
             alt="Custom luxury window treatments by Ginger Huff Interiors"
             className="w-full h-full object-cover opacity-60"
           />
@@ -330,6 +333,8 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
                   <div className="relative rounded-2xl overflow-hidden shadow-xl border border-stone-100 group" style={{ minHeight: '360px' }}>
                     <img loading="lazy" decoding="async"
                       src={selected.image}
+                      srcSet={imageSrcSet(selected.image, 1024)}
+                      sizes="(min-width: 1024px) 380px, (min-width: 768px) 40vw, 100vw"
                       alt={selected.headline}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
@@ -435,10 +440,10 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl">
-                <img src={launchImage1} alt="Motorized Hunter Douglas shades" className="w-full h-full object-cover" />
+                <img src={launchImage1} srcSet={imageSrcSet(launchImage1, 1024)} sizes="(min-width: 1024px) 300px, 50vw" loading="lazy" decoding="async" alt="Motorized Hunter Douglas shades" className="w-full h-full object-cover" />
               </div>
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl mt-8">
-                <img src={launchImage2} alt="Plantation shutters detail" className="w-full h-full object-cover" />
+                <img src={launchImage2} srcSet={imageSrcSet(launchImage2, 1024)} sizes="(min-width: 1024px) 300px, 50vw" loading="lazy" decoding="async" alt="Plantation shutters detail" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -462,7 +467,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
               { src: launchImage3, caption: 'Roman Shades · Design inspiration' },
             ].map((img, i) => (
               <div key={i} className="group relative rounded-2xl overflow-hidden shadow-md aspect-[3/4] border border-stone-100 hover:shadow-xl transition-shadow duration-500">
-                <img loading="lazy" decoding="async" src={img.src} alt={img.caption} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img loading="lazy" decoding="async" src={img.src} srcSet={imageSrcSet(img.src, 1024)} sizes="(min-width: 768px) 25vw, 50vw" alt={img.caption} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
                   <span className="text-white text-xs font-light font-mono tracking-wide">{img.caption}</span>
                 </div>

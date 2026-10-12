@@ -106,7 +106,7 @@ export default function App({initialPath = '/'}: {initialPath?: string}) {
             <div className="lg:col-span-4 space-y-6">
               <div className="flex items-center gap-3">
                 <img loading="lazy" decoding="async"
-                  src="/logos/Ginger Huff Interiors Logo.webp"
+                  src="/logos/ghi-logo-128.webp" width="40" height="40"
                   alt="Ginger Huff Interiors"
                   className="w-10 h-10 rounded-full object-contain shrink-0"
                 />

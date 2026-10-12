@@ -2,6 +2,7 @@ const launchImage0 = '/images/modern_living_room_1780882249127.webp';
 import { GINGER_HUFF_STORY } from '../data';
 import { Award, ShieldCheck, Heart, MapPin, Users, Flame, ArrowRight } from 'lucide-react';
 import { PageId } from '../types';
+import { imageSrcSet } from '../images';
 
 interface AboutSectionProps {
   onNavigate: (page: PageId) => void;
@@ -55,6 +56,8 @@ export default function AboutSection({ onNavigate }: AboutSectionProps) {
             <div className="relative rounded-2xl overflow-hidden border border-stone-100 group shadow-[0_4px_40px_rgba(0,0,0,0.10)]">
               <img loading="lazy" decoding="async"
                 src={launchImage0}
+                srcSet={imageSrcSet(launchImage0, 1376)}
+                sizes="(min-width: 1024px) 58vw, 100vw"
                 alt="Illustrative contemporary living room concept"
                 className="w-full h-[400px] sm:h-[500px] object-cover filter brightness-90 transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"

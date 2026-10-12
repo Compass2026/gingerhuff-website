@@ -4,6 +4,7 @@ import { Check, ArrowRight, Video, Sparkles, Image as ImageIcon, HelpCircle } fr
 import { PageId } from '../types';
 import { SERVICE_PAGES, getServicePage, servicePagePath } from '../content/service-pages';
 import { PAGE_PATHS } from '../routing';
+import { imageSrcSet } from '../images';
 
 interface ServicesSectionProps {
   onNavigate: (page: PageId) => void;
@@ -146,6 +147,9 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
                   <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-16/10 border border-stone-100 group">
                     <img loading="lazy" decoding="async"
                       src={selectedService.image}
+                      srcSet={imageSrcSet(selectedService.image, 1376)}
+                      sizes="(min-width: 1024px) 380px, (min-width: 768px) 40vw, 100vw"
+                      width="1376" height="768"
                       alt={selectedService.title}
                       className="w-full h-full object-cover filter brightness-90 transition-transform duration-700 group-hover:scale-105"
                       referrerPolicy="no-referrer"

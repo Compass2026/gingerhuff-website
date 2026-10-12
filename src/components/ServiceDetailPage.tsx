@@ -1,6 +1,7 @@
 import { ArrowRight, Check, ChevronDown, Phone, Sparkles } from 'lucide-react';
 import { getServicePage, servicePagePath, type ServicePageContent } from '../content/service-pages';
 import { PAGE_PATHS } from '../routing';
+import { imageSrcSet } from '../images';
 
 const contactHref = (page: ServicePageContent) => `${PAGE_PATHS.contact}?service=${encodeURIComponent(page.inquiryService)}`;
 
@@ -37,7 +38,7 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
             </div>
           </div>
           <figure className="lg:col-span-6 relative rounded-[28px] overflow-hidden shadow-2xl border border-stone-100">
-            <img src={page.image.src} alt={page.image.alt} width={page.image.width} height={page.image.height} loading="eager" fetchPriority="high" decoding="async" className="w-full h-auto aspect-[4/3] object-cover" />
+            <img src={page.image.src} srcSet={imageSrcSet(page.image.src, page.image.width)} sizes="(min-width: 1024px) 50vw, 100vw" alt={page.image.alt} width={page.image.width} height={page.image.height} loading="eager" fetchPriority="high" decoding="async" className="w-full h-auto aspect-[4/3] object-cover" />
             <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 p-4">
               <span className="text-[10px] uppercase font-mono tracking-widest text-brand-300 font-bold flex items-center gap-1"><Sparkles aria-hidden="true" className="w-3 h-3" /> Design inspiration</span>
             </figcaption>
