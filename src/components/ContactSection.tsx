@@ -1,4 +1,4 @@
-import { useEffect, useState, FormEvent } from 'react';
+import { useEffect, useRef, useState, FormEvent } from 'react';
 import { trackInquiry } from '../analytics';
 import { Send, CheckCircle, Mail, Phone, MapPin, Sparkles, Clock } from 'lucide-react';
 
@@ -19,6 +19,18 @@ export default function ContactSection() {
   useEffect(() => { setStartedAt(Date.now()); }, []);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  // One id per inquiry, kept across retries of the same details so a retry
+  // never creates a second inquiry or email; edited details get a new id.
+  const submission = useRef<{ id: string; fingerprint: string } | null>(null);
+  const submissionIdFor = (fingerprint: string) => {
+    if (!submission.current || submission.current.fingerprint !== fingerprint) {
+      const id = typeof crypto !== 'undefined' && 'randomUUID' in crypto
+        ? crypto.randomUUID()
+        : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}-${Math.random().toString(36).slice(2, 12)}`;
+      submission.current = { id, fingerprint };
+    }
+    return submission.current.id;
+  };
 
   const locations = [
     'Edwardsville, IL',
@@ -52,9 +64,11 @@ export default function ContactSection() {
     if (loading) return;
     setLoading(true); setError('');
     try {
-      const response = await fetch('/api/contact/', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({...formData, startedAt}), signal: AbortSignal.timeout(20000) });
+      const submissionId = submissionIdFor(JSON.stringify(formData));
+      const response = await fetch('/api/contact/', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({...formData, startedAt, submissionId}), signal: AbortSignal.timeout(30000) });
       const result = await response.json();
       if (!response.ok || result.ok !== true) throw new Error(result.error || 'Your inquiry could not be sent. Please try again or contact us directly.');
+      submission.current = null;
       setSubmitted(true);
       trackInquiry();
     } catch (error) { setError(error instanceof Error && error.name !== 'TimeoutError' ? error.message : 'We could not confirm delivery. Please try again or email ghi@gingerhuffinteriors.com.'); }
@@ -333,7 +347,7 @@ export default function ContactSection() {
                       <span className="italic text-brand-500">{formData.name}</span>
                     </h3>
                     <p className="text-stone-700 max-w-md mx-auto text-xs sm:text-sm font-light leading-relaxed">
-                      Your inquiry has been sent to Ginger Huff Interiors. Our team will follow up using the contact details you provided. If you need to reach us sooner, call (618) 791-9113.
+                      Your inquiry has been received by Ginger Huff Interiors. Our team will follow up using the contact details you provided. If you need to reach us sooner, call (618) 791-9113.
                     </p>
                   </div>
 
@@ -349,7 +363,7 @@ export default function ContactSection() {
                   <button
                     id="contact-reset-btn"
                     onClick={() => {
-                      setSubmitted(false); setError(''); setStartedAt(Date.now());
+                      setSubmitted(false); setError(''); setStartedAt(Date.now()); submission.current = null;
                       setFormData({
                         name: '',
                         email: '',

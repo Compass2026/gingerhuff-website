@@ -1,6 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": true,
+  "functions": {
+    "api/contact.ts": {
+      "maxDuration": 60
+    },
+    "api/inquiry-retry.ts": {
+      "maxDuration": 120
+    }
+  },
   "redirects": [
     {
       "source": "/contact-2/",
@@ -45,6 +53,12 @@
           "value": "SAMEORIGIN"
         }
       ]
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/inquiry-retry/",
+      "schedule": "*/5 * * * *"
     }
   ]
 }
