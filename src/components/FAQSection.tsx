@@ -29,7 +29,7 @@ export default function FAQSection() {
             Frequently Asked <span className="italic font-normal text-brand-500">Questions</span>
           </h2>
           <p className="text-stone-500 text-base sm:text-lg font-light leading-relaxed">
-            Everything you need to know about starting an interior project, sourcing fine fabric treatments, local trade budgets, and contractor partnerships.
+            Answers to common questions about starting an interior design project with Ginger Huff Interiors.
           </p>
           <div className="w-12 h-px mx-auto mt-8" style={{ background: '#a8d840' }} />
         </div>

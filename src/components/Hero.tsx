@@ -64,7 +64,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         {/* Eyebrow */}
         <p className="eyebrow text-white/70 mb-5">
           <span className="inline-block w-6 h-px bg-white/50 mr-3 align-middle" />
-          St. Louis &amp; Edwardsville · Est. 1996
+          St. Louis &amp; Edwardsville · Family-Owned
         </p>
 
         {/* Master headline */}

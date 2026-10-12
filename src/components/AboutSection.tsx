@@ -1,6 +1,6 @@
 const launchImage0 = '/images/modern_living_room_1780882249127.webp';
 import { GINGER_HUFF_STORY } from '../data';
-import { Award, ShieldCheck, Heart, MapPin, Users, Flame, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Heart, MapPin, Users, Flame, ArrowRight } from 'lucide-react';
 import { PageId } from '../types';
 import { imageSrcSet } from '../images';
 
@@ -13,22 +13,22 @@ export default function AboutSection({ onNavigate }: AboutSectionProps) {
     {
       icon: <Users className="w-6 h-6 text-brand-500" />,
       title: 'Three Generations',
-      desc: 'Passed down from grandmother to daughter and grand-daughter, ensuring consistent, time-tested wisdom paired with forward-thinking design elements.'
+      desc: 'Family-owned and operated, with three generations of designers bringing a personal, collaborative approach to every project.'
     },
     {
-      icon: <Award className="w-6 h-6 text-brand-500" />,
-      title: 'Over 30 Years',
-      desc: 'Formally established design presence, guiding homeowners through decades of shifting design currents with constant focus on timeless quality.'
+      icon: <ShieldCheck className="w-6 h-6 text-brand-500" />,
+      title: 'Complimentary Consultation',
+      desc: 'Every project begins with a complimentary design consultation to talk through your space, your style and what you would like to change.'
     },
     {
       icon: <MapPin className="w-6 h-6 text-brand-500" />,
       title: 'St. Louis Regional Pride',
-      desc: 'Deep local roots serving fine estates in Edwardsville, Glen Carbon, Ladue, Clayton, and Town and Country with premier, personalized style.'
+      desc: 'Serving homeowners and businesses across Edwardsville and the St. Louis metro, from new construction and remodels to single-room refreshes.'
     },
     {
       icon: <Heart className="w-6 h-6 text-brand-500" />,
-      title: '100% Tailored Focus',
-      desc: 'We limit our active roster to prioritize bespoke, direct collaboration—ensuring your homes aesthetic meets your distinct lifestyle.'
+      title: 'Designed Around You',
+      desc: 'Our design enhances your style. We listen first, so your home reflects the way you live rather than a designer’s formula.'
     }
   ];
 

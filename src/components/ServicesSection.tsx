@@ -31,7 +31,7 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
             Bespoke <span className="italic font-normal text-brand-500">Design Services</span>
           </h2>
           <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed">
-            Delivering high-end interior solutions across luxury residences, custom build sites, boutique corporate atmospheres, and convenient E-Design.
+            Residential and commercial interior design across Edwardsville and the St. Louis metro, from new construction and remodels to single-room refreshes and virtual e-design.
           </p>
           <div className="w-24 h-[1px] bg-brand-500/50 mx-auto mt-6"></div>
         </div>
@@ -73,10 +73,10 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
 
             <div className="glass p-6 rounded-2xl border border-stone-100 mt-8 space-y-4">
               <h3 className="font-serif text-md text-brand-500 font-semibold uppercase tracking-wider">
-                Need Trade Pricing?
+                Complimentary Consultation
               </h3>
               <p className="text-[12px] text-stone-500 leading-relaxed font-light">
-                We maintain direct trade relationships with Ballard Designs, Pottery Barn, Sherwin Williams, and elite boutique fabric houses. We help you explore furnishings and finishes suited to your project.
+                Every project starts with a complimentary design consultation. Tell us about your space and what you would like to change, and we will talk through how we can help.
               </p>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
                 <div className="flex flex-col justify-between">
                   <div>
                     <span className="text-xs uppercase tracking-[0.2em] text-brand-500 font-bold mb-3 inline-block">
-                      Comprehensive Offer
+                      The Service
                     </span>
                     <h3 className="font-serif text-3xl sm:text-4xl text-stone-900 font-light tracking-wide mb-6">
                       {selectedService.title}
@@ -106,7 +106,7 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
 
                     <div className="space-y-3 mb-8">
                       <p className="text-[11px] uppercase tracking-widest text-brand-500 font-semibold">
-                        What's Included:
+                        How We Can Help:
                       </p>
                       {selectedService.features.map((feat, i) => (
                         <div key={i} className="flex items-start gap-2 text-stone-700">
@@ -156,7 +156,7 @@ export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
                     />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 p-4">
                       <span className="text-[10px] uppercase font-mono tracking-widest text-brand-500 font-bold flex items-center gap-1">
-                        <Sparkles className="w-3 h-3" /> Project Render Showcase
+                        <Sparkles className="w-3 h-3" /> Design Inspiration
                       </span>
                     </div>
                   </div>
