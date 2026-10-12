@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { PageId } from '../types';
 
@@ -6,33 +6,35 @@ interface HeroProps {
   onNavigate: (page: PageId) => void;
 }
 
+// The video is part of the prerendered HTML so the phone can start it as soon as the page arrives, without
+// waiting for JavaScript. Each <source> media query picks the file: desktop gets the original, phones a 9:16
+// crop (about 320 KB, no audio), and visitors who ask for reduced motion match neither, so nothing downloads and
+// the poster stays. Raw HTML keeps the `muted` attribute, which iOS needs for autoplay and React does not render.
+// The video must stay visible: iOS will not autoplay a hidden (e.g. opacity 0) video.
+const HERO_VIDEO = '<video id="hero-bg-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" poster="/hero-poster.webp" class="absolute inset-0 w-full h-full object-cover">'
+  + '<source src="/Prompt_A_seamless_cinematic.mp4" type="video/mp4" media="(min-width: 1024px) and (prefers-reduced-motion: no-preference)">'
+  + '<source src="/hero-mobile.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">'
+  + '</video>';
+
 export default function Hero({ onNavigate }: HeroProps) {
-  // The poster is the LCP image; the video loads only after the page has, so it never delays first paint.
-  // Phones get a 9:16 crop (about 320 KB, no audio) instead of the 2.5 MB desktop file.
-  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const videoHost = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || connection?.saveData) return;
-    const src = window.matchMedia('(min-width: 1024px)').matches ? '/Prompt_A_seamless_cinematic.mp4' : '/hero-mobile.mp4';
-    let timer = 0;
-    const start = () => { timer = window.setTimeout(() => setVideoSrc(src), 500); };
-    if (document.readyState === 'complete') start(); else window.addEventListener('load', start, { once: true });
-    return () => { window.removeEventListener('load', start); window.clearTimeout(timer); };
-  }, []);
-  // iOS only autoplays inline video that is muted as a DOM property, which React's `muted` prop does not reliably set.
-  // The video must also stay visible: iOS will not autoplay a hidden (e.g. opacity 0) video. Its poster matches the
-  // image underneath, so there is no flash while it buffers.
-  const startVideo = (video: HTMLVideoElement | null) => {
-    if (!video) return;
+    const video = videoHost.current?.querySelector('video');
+    if (!video || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if ((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData) {
+      video.querySelectorAll('source').forEach(source => source.remove());
+      video.load();
+      return;
+    }
+    // Autoplay refused (e.g. iOS Low Power Mode): keep the poster and retry on the visitor's first tap.
+    const retry = () => { video.play().catch(() => {}); };
     video.muted = true;
-    video.defaultMuted = true;
     video.play().catch(() => {
-      // Autoplay refused (e.g. iOS Low Power Mode): keep the poster and retry on the visitor's first tap.
-      const retry = () => { video.play().catch(() => {}); };
       document.addEventListener('touchend', retry, { once: true, passive: true });
       document.addEventListener('click', retry, { once: true });
     });
-  };
+    return () => { document.removeEventListener('touchend', retry); document.removeEventListener('click', retry); };
+  }, []);
 
   return (
     <div
@@ -49,19 +51,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      {videoSrc && <video
-        id="hero-bg-video"
-        ref={startVideo}
-        autoPlay
-        aria-hidden="true"
-        preload="auto"
-        muted
-        loop
-        playsInline
-        poster="/hero-poster.webp"
-        className="absolute inset-0 w-full h-full object-cover"
-        src={videoSrc}
-      />}
+      <div ref={videoHost} className="absolute inset-0" aria-hidden="true" dangerouslySetInnerHTML={{ __html: HERO_VIDEO }} />
 
       {/* ── Gradient scrim — light on top, richer at bottom ─ */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/65 z-10" />
