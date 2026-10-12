@@ -9,6 +9,7 @@ React/Vite website with prerendered HTML routes and a Vercel serverless inquiry 
 - `npm run lint`
 - `npm test` (mocked delivery, validation, retry and failure cases; sends no real emails)
 - `npm run build` (optimizes source images, builds assets and prerenders every route, then checks service pages and internal links)
+- `node scripts/generate-icons.mjs` (regenerates the favicon, Apple touch and manifest icons from `public/logos/Ginger Huff Interiors Logo.webp`; run after the logo changes and commit the output)
 
 ## Inquiry configuration
 
