@@ -10,7 +10,6 @@ export default function Hero({ onNavigate }: HeroProps) {
   // The poster is the LCP image; the video loads only after the page has, so it never delays first paint.
   // Phones get a 9:16 crop (about 320 KB, no audio) instead of the 2.5 MB desktop file.
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
-  const [playing, setPlaying] = useState(false);
   useEffect(() => {
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || connection?.saveData) return;
@@ -21,11 +20,18 @@ export default function Hero({ onNavigate }: HeroProps) {
     return () => { window.removeEventListener('load', start); window.clearTimeout(timer); };
   }, []);
   // iOS only autoplays inline video that is muted as a DOM property, which React's `muted` prop does not reliably set.
+  // The video must also stay visible: iOS will not autoplay a hidden (e.g. opacity 0) video. Its poster matches the
+  // image underneath, so there is no flash while it buffers.
   const startVideo = (video: HTMLVideoElement | null) => {
     if (!video) return;
     video.muted = true;
     video.defaultMuted = true;
-    video.play().catch(() => { /* Autoplay refused (e.g. iOS Low Power Mode): the poster stays visible. */ });
+    video.play().catch(() => {
+      // Autoplay refused (e.g. iOS Low Power Mode): keep the poster and retry on the visitor's first tap.
+      const retry = () => { video.play().catch(() => {}); };
+      document.addEventListener('touchend', retry, { once: true, passive: true });
+      document.addEventListener('click', retry, { once: true });
+    });
   };
 
   return (
@@ -52,8 +58,8 @@ export default function Hero({ onNavigate }: HeroProps) {
         muted
         loop
         playsInline
-        onPlaying={() => setPlaying(true)}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${playing ? 'opacity-100' : 'opacity-0'}`}
+        poster="/hero-poster.webp"
+        className="absolute inset-0 w-full h-full object-cover"
         src={videoSrc}
       />}
 
