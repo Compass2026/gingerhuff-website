@@ -32,3 +32,12 @@ test('the contact form does not use a real client name as an example', () => {
   const html = renderToStaticMarkup(React.createElement(App, { initialPath: PAGE_PATHS.contact }));
   assert.ok(!/placeholder="[^"]*McDonald/i.test(html));
 });
+
+test('the confirmed BBB accreditation links to the BBB profile on every page', () => {
+  const profile = 'https://www.bbb.org/us/il/maryville/profile/commercial-interior-designers/ginger-huff-interiors-0734-310370346';
+  for (const path of Object.values(PAGE_PATHS)) {
+    const html = renderToStaticMarkup(React.createElement(App, { initialPath: path }));
+    assert.ok(html.includes(`href="${profile}"`) && html.includes('BBB Accredited Business'), `${path} BBB badge`);
+    assert.ok(!/\bA\+ (rating|rated)\b/i.test(html), `${path} must not state a BBB rating`);
+  }
+});
