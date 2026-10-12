@@ -1,5 +1,7 @@
 import type { BlogPost } from '../types';
-export const BLOG_POSTS: BlogPost[] = [
+import releasedArticles from '../../data/blog-posts.json';
+import { loadReleasedArticles } from './compass-blog';
+const LEGACY_POSTS: BlogPost[] = [
   {
     "id": "published-0",
     "slug": "how-an-interior-designer-saves-you-time-money-and-stress",
@@ -49,3 +51,5 @@ export const BLOG_POSTS: BlogPost[] = [
   "image": ""
 }
 ];
+
+export const BLOG_POSTS = loadReleasedArticles(releasedArticles, LEGACY_POSTS);
