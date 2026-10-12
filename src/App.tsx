@@ -16,9 +16,8 @@ import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
 import TestimonialsSlider from './components/TestimonialsSlider';
 import WindowTreatmentsPage from './components/WindowTreatmentsPage';
-import BrandTicker from './components/BrandTicker';
 import ServiceDetailPage from './components/ServiceDetailPage';
-import { Mail, Phone, MapPin, Instagram, Facebook, Award, ArrowUp, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook, Users, ArrowUp, Sparkles } from 'lucide-react';
 
 export default function App({initialPath = '/'}: {initialPath?: string}) {
   const {page: currentPage, article, service} = resolveRoute(initialPath);
@@ -40,9 +39,6 @@ export default function App({initialPath = '/'}: {initialPath?: string}) {
           <div className="space-y-0">
             {/* 1. Cinematic Hero Header */}
             <Hero onNavigate={handleNavigate} />
-
-            {/* 2. Trusted By Brand Ticker */}
-            <BrandTicker />
 
             {/* 3. Legacy Brand Story */}
             <AboutSection onNavigate={handleNavigate} />
@@ -121,16 +117,16 @@ export default function App({initialPath = '/'}: {initialPath?: string}) {
               </div>
 
               <p className="text-white/55 text-xs sm:text-sm font-light leading-relaxed max-w-sm">
-                Combining timeless family practice, architectural brilliance, and trade alliances to create custom, luxurious residential and commercial spaces across three proud generations.
+                Family-owned interior design with three generations of designers, creating residential and commercial spaces across Edwardsville and the St. Louis metro.
               </p>
 
               {/* Badges of Practice */}
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-brand-500/25 text-[10px] uppercase font-mono tracking-wider text-brand-400">
-                  <Award className="w-3.5 h-3.5" /> 30+ Years Legacy
+                  <Users className="w-3.5 h-3.5" /> Family-Owned
                 </div>
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-brand-500/25 text-[10px] uppercase font-mono tracking-wider text-brand-400">
-                  <Sparkles className="w-3.5 h-3.5" /> Hunter Douglas Partner
+                  <Sparkles className="w-3.5 h-3.5" /> Complimentary Consultation
                 </div>
               </div>
             </div>
@@ -221,7 +217,7 @@ export default function App({initialPath = '/'}: {initialPath?: string}) {
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-400"></span>
-                  National Scale E-Design (Remote)
+                  Virtual E-Design
                 </li>
               </ul>
             </div>

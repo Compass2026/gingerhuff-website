@@ -5,12 +5,11 @@ const asset2 = '/images/modern_living_room_1780882249127.webp';
 import { Service, Project, Testimonial, BlogPost, FAQItem } from './types';
 
 export const GINGER_HUFF_STORY = {
-  founded: 'Over 30 Years of Design Excellence',
   generations: 'Three Generations of Designers',
   headquarters: 'St. Louis Metro Area',
   focusAreas: ['Edwardsville', 'Glen Carbon', 'Clayton', 'Ladue', 'Town and Country'],
-  bio: 'At Ginger Huff Interiors, design is more than a profession—it is a family legacy. For over three decades, our family-owned and operated firm has transformed houses into forever homes across the St. Louis Metro Area. Combining twenty-first-century sophistication with the warm, personalized approach of three generations of interior designers, we bring unrivaled passion and premium craft to every detail of your space.',
-  philosophy: 'We believe that your space should tell your story. Our design process is deeply collaborative, blending high-end luxury with functional, liveable ease. From bespoke custom furniture to full-scale home construction consultation, we deliver high-end interiors that resonate with your personal lifestyle.'
+  bio: 'At Ginger Huff Interiors, design is a family affair. We are family-owned and operated, with three generations of designers, and we help homeowners and businesses across Edwardsville and the St. Louis metro create spaces that reflect their style and the way they live.',
+  philosophy: 'Our motto is simple: Collaborate. Renovate. Elevate. Whether you are planning new construction, a remodel or a refresh of a single room, we work closely with you, because the finishing touches are what transform a house into a home.'
 };
 
 export const SERVICES: Service[] = [
@@ -18,60 +17,60 @@ export const SERVICES: Service[] = [
     id: 'home-interiors',
     detailPages: ['space-planning', 'color-consultation', 'interior-styling-decorating', 'home-makeovers', 'custom-furniture-design'],
     title: 'Home Interiors',
-    shortDescription: 'Bespoke residential solutions meticulously tailored representing the absolute pinnacle of custom style.',
-    description: 'Our premier residential service delivers completely personalized layout planning, color coordination, fine art advising, and tailored custom furniture, resulting in cohesive luxury that perfectly fits your day-to-day life.',
+    shortDescription: 'Personalized residential design, from layout and color to furniture and finishing touches.',
+    description: 'Our residential design service covers layout planning, color coordination and furniture selection, so each room fits the way you live and your home feels cohesive from room to room.',
     image: asset2,
     features: [
-      'Full-Scale Spatial Planning',
-      'Custom Furniture Design & Fabric Sourcing',
-      'Art Curation & Lighting Consultation',
-      'Window Treatment Selection (Hunter Douglas partner)',
-      'Accessory Styling & Final White-Glove Installation'
+      'Layout and space planning',
+      'Color coordination',
+      'Furniture selection and custom furniture design',
+      'Custom window treatments',
+      'Styling and finishing touches'
     ]
   },
   {
     id: 'kitchen-bath',
     detailPages: ['kitchen-bath-design'],
     title: 'Kitchen & Bath',
-    shortDescription: 'Bespoke, timeless redesigns creating modern hubs of culinary luxury and serene spa-like relaxation.',
-    description: 'We elevate kitchens and bathrooms from utility spaces to custom architectural highlights. We source gorgeous countertops, bespoke custom cabinetry, statement plumbing fixtures, and innovative space solutions.',
+    shortDescription: 'Design guidance for kitchen and bathroom remodels and new construction.',
+    description: 'Kitchens and bathrooms involve some of the most permanent choices in a home. We help you plan how the room should work and coordinate finishes, fixtures, lighting and color so it feels connected to the rest of your home.',
     image: asset3,
     features: [
-      'Custom Cabinetry Design & Layouts',
-      'Premium Solid-Surface & Marble Selection',
-      'Plumbing Fixture & Appliance Integration',
-      'Task & Accent Lighting Plans',
-      'Coordination with Elite Local Craftsmen'
+      'Layout priorities for storage, work zones and seating',
+      'Coordinating finishes and fixtures',
+      'Lighting and color coordination',
+      'Remodels and new construction',
+      'A look that relates to the rest of your home'
     ]
   },
   {
     id: 'commercial-design',
     detailPages: ['commercial-interior-design'],
     title: 'Commercial Design',
-    shortDescription: 'Polished, contemporary corporate and boutique layouts centered on productivity, elegance, and brand identity.',
-    description: 'Whether a stylish client-facing boutique, a luxury doctor’s office, or a modern corporate suite, we design layouts that inspire productivity, celebrate your brand, and leave your clients breathless.',
+    shortDescription: 'Inviting, practical interiors for offices, practices and client-facing businesses.',
+    description: 'Whether you are updating a reception area, a conference room or a whole office, we design commercial spaces that welcome clients, work well for staff and reflect your business.',
     image: asset6,
     features: [
-      'Brand Identity Interior Integration',
-      'High-Durability Professional Furnishings',
-      'Ergonomic Layouts & Glass Partition Design',
-      'Acoustic Ceiling & Noise Dampening Sourcing',
-      'Lighting & Reception Desk Visual Masterwork'
+      'Reception and client-facing areas',
+      'Layouts that support staff and visitors',
+      'Furniture, color and finishes for daily use',
+      'Planning around how your business runs',
+      'New spaces and updates to existing ones'
     ]
   },
   {
     id: 'edesign',
     detailPages: ['e-design'],
     title: 'E-Design & Virtual Consultation',
-    shortDescription: 'Flexible, high-efficiency remote interior architectural planning delivered directly to your inbox.',
-    description: 'Distance is no barrier to high-end luxury. Through our curated E-Design services, we deliver comprehensive, digital room plans, 3D photorealistic mockups, and clickable buying guides tailored to your budget and room measurements.',
+    shortDescription: 'Virtual design guidance for busy schedules.',
+    description: 'E-design brings design direction to you remotely. Share photos, measurements and how you use the room, and work through a plan together that you can carry out on your own timeline.',
     image: asset4,
     features: [
-      'Interactive Room Layout Renderings (3D)',
-      'Clickable Curated Shopping & Sourcing Guild',
-      'Custom Color & Material Swatch Palette Selection',
-      'Sizing, Dimensioning, & Decor Positioning Guides',
-      'Direct Digital Communication with Lead Designer'
+      'Work together remotely',
+      'Built around your photos and measurements',
+      'Guidance on furniture, color and layout',
+      'Carry out the plan on your own timeline',
+      'A good fit for busy schedules'
     ]
   }
 ];
@@ -139,46 +138,37 @@ export const TESTIMONIALS: Testimonial[] = [
   }
 ];
 
-export const BRANDS = [
-  { name: 'Pottery Barn', logo: 'PB' },
-  { name: 'Ballard Designs', logo: 'BD' },
-  { name: 'Sherwin Williams', logo: 'SW' },
-  { name: 'Hunter Douglas', logo: 'HD' },
-  { name: 'Arhaus', logo: 'AR' },
-  { name: 'Restoration Hardware', logo: 'RH' }
-];
-
 export { BLOG_POSTS } from './content/articles';
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
     id: 'faq1',
-    question: 'How does your three-generation legacy benefit my residential project?',
-    answer: 'With over 30 years of design experience passed down, we merge foundational, timeless principles with cutting-edge current trends. Our junior designers introduce fresh, modern aesthetics like sleek glass layouts and high-efficiency home tech, while our senior principals provide invaluable wisdom in structural construction, architectural sourcing, and contractor coordination. You get the best of all design worlds!',
+    question: 'What is it like to work with a family-owned design firm?',
+    answer: 'Ginger Huff Interiors is family-owned and operated, with three generations of designers. That means a personal, collaborative approach: we get to know how you live and what you love before recommending anything.',
     category: 'About the Firm'
   },
   {
     id: 'faq2',
-    question: 'Which specific areas in the St. Louis Metro Area do you serve?',
-    answer: 'We serve the entire St. Louis Metro Area, with a heavy emphasis on Edwardsville, Glen Carbon, Clayton, Ladue, Town and Country, Chesterfield, Kirkwood, and Belleville. For clients located outside these areas or nationwide, our comprehensive E-Design and Virtual Consult package is the absolute perfect luxury alternative.',
+    question: 'Which areas do you serve?',
+    answer: 'We serve homeowners and businesses across Edwardsville and the St. Louis metro area. If you are outside the area or prefer to work remotely, ask about our virtual e-design service.',
     category: 'Location & Sourcing'
   },
   {
     id: 'faq3',
     question: 'How do you structure your design fees? Can we work in phases?',
-    answer: 'We provide clear, transparent pricing based on the scope of the project. For custom kitchens, baths, or entire home remodeling, we outline detailed project fees upfront. For smaller-scale residential updates or virtual e-designs, we work on a flat room-rate package so you can control your budget step-by-step. Working in phases is extremely common and welcomed!',
+    answer: 'Fees depend on the scope of your project. Your complimentary design consultation is the place to talk through scope, fees and whether working in phases makes sense for you.',
     category: 'Investment & Pricing'
   },
   {
     id: 'faq4',
-    question: 'What is the standard timeline for custom furniture and custom window treatments?',
-    answer: 'Because we partner directly with world-class manufacturers such as Hunter Douglas, Ballard Designs, Sherwin Williams, and elite boutique fabric mills, custom drapery, blinds, and upholstered sofas typically average 6 to 12 weeks. We manage the entire ordering, tracking, and white-glove setup process, shielding you from any logistical headaches.',
+    question: 'How long do custom furniture and custom window treatments take?',
+    answer: 'Timing depends on the product, the materials and how each piece is made. Ginger can give you guidance on timing once your selections are clear.',
     category: 'Process & Timelines'
   },
   {
     id: 'faq5',
     question: 'How do we begin working together on our home project?',
-    answer: 'Starting is incredibly simple! You can fill out our contact form, selecting your preferred services. We will schedule a personalized 15-minute discovery consultation, followed by an in-home or virtual consultation where we outline design options, analyze natural lighting, measure proportions, and present design layouts.',
+    answer: 'Fill out our contact form or call (618) 791-9113. We will set up a complimentary design consultation to talk about your space, your goals and how we can help.',
     category: 'Getting Started'
   }
 ];

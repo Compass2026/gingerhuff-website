@@ -43,7 +43,7 @@ export default function ContactSection() {
     'Clayton, MO',
     'Ladue, MO',
     'Town and Country, MO',
-    'Other / National (Virtual E-Design)'
+    'Other / Outside the Area (Virtual E-Design)'
   ];
 
   const serviceTypes = [
@@ -151,7 +151,7 @@ export default function ContactSection() {
                     Service Area
                   </h3>
                   <p className="text-stone-700 text-sm sm:text-base font-light">
-                    Edwardsville & Clayton, St. Louis Metro Area
+                    Edwardsville and the St. Louis Metro Area
                   </p>
                 </div>
               </div>
@@ -201,7 +201,7 @@ export default function ContactSection() {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Katherine McDonald"
+                        placeholder="e.g. Jordan Smith"
                         className="w-full glass-input text-stone-900 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/30 transition-all font-light"
                       />
                     </div>
@@ -218,7 +218,7 @@ export default function ContactSection() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="e.g. mcdonald@example.com"
+                        placeholder="e.g. jordan@example.com"
                         className="w-full glass-input text-stone-900 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/30 transition-all font-light"
                       />
                     </div>
@@ -310,7 +310,7 @@ export default function ContactSection() {
                       rows={4}
                       value={formData.details}
                       onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                      placeholder="Share a short summary. e.g., We are looking to remodel our Ladue kitchen using custom white-oak cabinetry, marble waterfall islands, and new integrated lighting..."
+                      placeholder="Share a short summary. e.g., We are planning a kitchen remodel and would like help choosing finishes, lighting and colors..."
                       className="w-full glass-input text-stone-900 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/30 transition-all font-light resize-none"
                     />
                   </div>

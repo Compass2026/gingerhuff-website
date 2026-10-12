@@ -31,16 +31,16 @@ const TREATMENT_CATEGORIES = [
     icon: Layers,
     headline: 'Floor-to-Ceiling Custom Drapery',
     description:
-      "Ginger's signature drapery service combines fine European fabrics with expert workroom craftsmanship. Each panel is hand-tailored to your exact window dimensions, lining preference, and heading style — from classically elegant pinch pleat to modern ripple-fold.",
+      'Custom drapery is made to your window dimensions, with choices of fabric, lining and heading style, from classic pinch pleat to modern ripple-fold. It softens a room, frames the view and can add privacy and light control.',
     features: [
-      'Fabric selection from Kravet, Fabricut, Schumacher & boutique mills',
-      'Custom heading styles: pinch pleat, goblet, ripple-fold, tab top',
-      'Blackout, thermal, and decorative lining options',
-      'Custom hardware: rods, rings, and statement finials',
-      'Professional measurement, fabrication & white-glove installation',
+      'Fabric choices to suit your room and style',
+      'Heading styles such as pinch pleat, goblet, ripple-fold and tab top',
+      'Blackout, thermal and decorative lining options',
+      'Hardware choices: rods, rings and finials',
+      'Made to the measurements of your windows',
     ],
     image: launchImage0,
-    badge: 'Signature Service',
+    badge: 'Tailored Look',
   },
   {
     id: 'shutters',
@@ -48,16 +48,16 @@ const TREATMENT_CATEGORIES = [
     icon: Shield,
     headline: 'Timeless Plantation Shutters',
     description:
-      'Plantation shutters offer the ultimate in light control, privacy, and architectural elegance. Our shutters are custom-built to your window openings in premium wood, faux wood, or painted finishes — and stand as a permanent, value-adding feature in any home.',
+      'Plantation shutters are fitted to your window openings and offer strong light control and privacy with a clean, architectural look. They come in wood and composite materials with painted or stained finishes.',
     features: [
-      'Real hardwood & premium poly-resin construction',
-      'Louver sizes: 2½", 3½", and 4½" for any aesthetic',
-      'Bay, arch, arched, and specialty window solutions',
-      'Custom paint matching to any Sherwin Williams color',
-      'Full-frame & café-style configurations available',
+      'Wood and composite options',
+      'Common louver sizes include 2½", 3½" and 4½"',
+      'Options for bay, arched and specialty windows',
+      'Painted and stained finishes',
+      'Full-height and café-style configurations',
     ],
     image: launchImage2,
-    badge: 'Most Requested',
+    badge: 'Classic Choice',
   },
   {
     id: 'motorized',
@@ -65,16 +65,16 @@ const TREATMENT_CATEGORIES = [
     icon: Smartphone,
     headline: 'Motorized & Smart Home Shades',
     description:
-      'We help you explore motorized shading options for your home. Control every window in your home with a tap, voice command, or automated schedule — effortlessly elegant.',
+      'We help you explore motorized shading options for your home. Depending on the system, shades can be operated by remote, app, voice command or schedule, which is especially useful for tall or hard-to-reach windows.',
     features: [
-      'Hunter Douglas PowerView® Automation options',
-      'Compatible with Alexa, Google Home, Apple HomeKit, Control4',
-      'Scene programming: Morning Rise, Movie Mode, Privacy settings',
-      'Solar, blackout, and woven wood motorized options',
-      'Battery, hardwired, and rechargeable motor systems',
+      'Remote, app or scheduled control, depending on the system',
+      'Smart home compatibility on many systems',
+      'Solar, blackout and woven motorized options',
+      'Battery, rechargeable and hardwired motor options',
+      'Helpful for tall, wide or hard-to-reach windows',
     ],
     image: launchImage1,
-    badge: 'Hunter Douglas Partner',
+    badge: 'Smart Living',
   },
   {
     id: 'shades',
@@ -82,13 +82,13 @@ const TREATMENT_CATEGORIES = [
     icon: Sun,
     headline: 'Roman Shades & Roller Shades',
     description:
-      'A beautifully tailored Roman or roller shade is the workhorse of the window treatment world — versatile, functional, and endlessly stylish. Our custom shades are crafted from hundreds of fabric options and engineered to operate flawlessly for years.',
+      'A tailored Roman or roller shade is one of the most versatile window treatments: clean when raised, soft or streamlined when lowered, and available in fabrics from sheer to blackout.',
     features: [
-      'Classic flat, relaxed, and hobbled Roman shade styles',
-      'Roller shades in solar screen, light-filtering & blackout',
-      'Cordless and continuous-loop lift systems for child safety',
-      'Custom sizing to the 1/8 inch for a perfect fit',
-      'Woven wood, linen, velvet, and performance fabric options',
+      'Flat, relaxed and hobbled Roman shade styles',
+      'Roller shades in solar screen, light-filtering and blackout',
+      'Cordless and continuous-loop lift options',
+      'Sized to your windows',
+      'Woven wood, linen, velvet and performance fabric options',
     ],
     image: launchImage3,
     badge: 'Most Versatile',
@@ -98,26 +98,26 @@ const TREATMENT_CATEGORIES = [
 const PROCESS_STEPS = [
   {
     step: '01',
-    title: 'In-Home Consultation',
-    desc: 'Ginger visits your home to assess natural light patterns, window architecture, existing décor, and lifestyle needs. No guesswork — just precise, personalized recommendations.',
+    title: 'Complimentary Consultation',
+    desc: 'Start by talking through your windows, how much light and privacy you want, and how each room is used. The right treatment depends on all three.',
     icon: Eye,
   },
   {
     step: '02',
-    title: 'Custom Fabric & Style Selection',
-    desc: 'We bring the showroom to you. From our curated collection of trade-exclusive fabrics, hardware finishes, and motorization systems, you choose exactly what resonates.',
+    title: 'Style & Fabric Selection',
+    desc: 'Compare styles, fabrics, linings, hardware and motorization options, and choose what suits your room and the way you live.',
     icon: Sparkles,
   },
   {
     step: '03',
-    title: 'Professional Measurement',
-    desc: 'Every window is measured to the 1/8 inch by our team. Precision measurement is the foundation of a flawless finished product — never an afterthought.',
+    title: 'Measurement',
+    desc: 'Custom treatments depend on accurate measurements. Ginger will explain how measuring is handled for your project.',
     icon: Shield,
   },
   {
     step: '04',
-    title: 'White-Glove Installation',
-    desc: "Our expert installers arrive on schedule, handle every bracket, rod, and panel with care, and leave your home spotless. We don't consider the job done until you're wowed.",
+    title: 'Ordering & Installation',
+    desc: 'Once your selections are final, Ginger will walk you through ordering, timing and installation for your project.',
     icon: Star,
   },
 ];
@@ -125,19 +125,19 @@ const PROCESS_STEPS = [
 const FAQS = [
   {
     q: 'How long do custom window treatments take to arrive?',
-    a: "Custom drapery and Hunter Douglas motorized products typically take 6–10 weeks from order to installation. In-stock or semi-custom shades can be ready in 2–4 weeks. We'll provide a precise timeline during your consultation.",
+    a: 'It depends on the product and how it is made. Ginger can give you timing guidance once your selections are clear.',
   },
   {
     q: 'Can you match my existing décor colors?',
-    a: 'Absolutely. We work with hundreds of fabric options across our trade accounts and can custom-match to virtually any color palette. We also coordinate with Sherwin Williams for painted shutter finishes.',
+    a: 'Coordinating window treatments with your existing colors and finishes is part of the process. Bring photos or samples of fabrics, paint and flooring to your consultation.',
   },
   {
-    q: 'Do you offer motorization for existing shades?',
-    a: "In many cases, yes. Hunter Douglas PowerView® retrofit kits are available for compatible shade systems. We'll assess your current treatments during the consultation and advise accordingly.",
+    q: 'Can existing shades be motorized?',
+    a: 'Sometimes. It depends on the shade and the system. Share details of your current treatments during the consultation and Ginger can advise.',
   },
   {
-    q: 'What areas do you serve for window treatment installations?',
-    a: 'We serve the full St. Louis Metro Area including Edwardsville, Glen Carbon, Clayton, Ladue, and Town & Country. For clients outside the area, we offer virtual consultation and can coordinate with local installers.',
+    q: 'What areas do you serve for window treatments?',
+    a: 'We serve Edwardsville and the St. Louis metro area. If you are outside the area, get in touch to ask whether we can help.',
   },
 ];
 
@@ -175,7 +175,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.25em] font-semibold font-mono border"
                 style={{ background: 'rgba(168,216,64,0.12)', borderColor: 'rgba(168,216,64,0.3)', color: '#a8d840' }}>
                 <Zap className="w-3 h-3" />
-                Hunter Douglas Certified Partner
+                Custom Window Treatments
               </span>
             </div>
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-light tracking-tight leading-[1.08] mb-6">
@@ -183,7 +183,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
               <span className="italic" style={{ color: '#a8d840' }}>Treatments</span>
             </h1>
             <p className="text-white/70 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-lg">
-              From floor-to-ceiling custom drapery to motorized smart shades — Ginger Huff brings 30+ years of window treatment mastery to every room in your home.
+              From floor-to-ceiling custom drapery to motorized smart shades, Ginger Huff Interiors helps you choose window treatments for light, privacy and style in every room of your home.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
@@ -209,12 +209,12 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
           {/* Stat strip */}
           <div className="grid grid-cols-3 gap-6 mt-16 pt-10 border-t border-white/10 max-w-lg animate-fade-up-d2">
             {[
-              { value: '30+', label: 'Years of Experience' },
-              { value: '500+', label: 'Homes Dressed' },
-              { value: '100%', label: 'Custom Made' },
+              { value: 'Drapery', label: 'Custom Made' },
+              { value: 'Shutters', label: 'And Shades' },
+              { value: 'Motorized', label: 'Smart Options' },
             ].map((s) => (
               <div key={s.label}>
-                <div className="font-serif text-2xl sm:text-3xl font-light" style={{ color: '#a8d840' }}>{s.value}</div>
+                <div className="font-serif text-xl sm:text-3xl font-light" style={{ color: '#a8d840' }}>{s.value}</div>
                 <div className="text-[10px] uppercase tracking-widest text-white/50 font-mono mt-1">{s.label}</div>
               </div>
             ))}
@@ -235,7 +235,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
               Crafted for Every <span className="italic font-normal text-[#96c52e]">Window</span>
             </h2>
             <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed">
-              Whether you need light-filtering softness, complete blackout privacy, or intelligent motorized automation — we have a bespoke solution tailored precisely to your lifestyle.
+              Whether you want soft, filtered light, blackout privacy or motorized convenience, there is a window treatment suited to your room and the way you live.
             </p>
             <div className="w-24 h-[1px] bg-[#96c52e]/50 mx-auto mt-6" />
           </div>
@@ -274,14 +274,14 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
                 );
               })}
 
-              {/* Hunter Douglas badge card */}
+              {/* Consultation card */}
               <div className="mt-8 p-6 rounded-2xl border border-stone-100 space-y-3" style={{ background: 'rgba(168,216,64,0.05)' }}>
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-mono font-bold text-[#96c52e] border border-[#a8d840]/30" style={{ background: 'rgba(168,216,64,0.12)' }}>HD</div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#96c52e] font-mono">Hunter Douglas Partner</span>
+                  <Sparkles className="w-4 h-4 text-[#96c52e]" />
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[#96c52e] font-mono">Complimentary Consultation</span>
                 </div>
                 <p className="text-[12px] text-stone-500 leading-relaxed font-light">
-                  Explore Hunter Douglas window treatment options with Ginger. We can help you compare styles, light control, and features suited to your space.
+                  Compare styles, light control and features with Ginger to find the right treatment for each window.
                 </p>
               </div>
             </div>
@@ -362,7 +362,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
               From Concept to <span className="italic text-[#96c52e]">Installation</span>
             </h2>
             <p className="text-stone-600 text-sm font-light leading-relaxed">
-              A seamless, stress-free process guided by 30+ years of window treatment expertise.
+              A clear, step-by-step process from your first conversation to finished windows.
             </p>
             <div className="w-20 h-[1px] bg-[#96c52e]/40 mx-auto mt-6" />
           </div>
@@ -393,8 +393,8 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
         </div>
       </section>
 
-      {/* ── Hunter Douglas Spotlight ──────────────────────────────── */}
-      <section id="wt-hd-partner" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#1a1c17] relative overflow-hidden">
+      {/* ── Motorized Spotlight ──────────────────────────────────── */}
+      <section id="wt-motorized" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#1a1c17] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[160px]" style={{ background: 'rgba(168,216,64,0.07)' }} />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[120px]" style={{ background: 'rgba(168,216,64,0.05)' }} />
@@ -405,22 +405,22 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.25em] font-semibold font-mono border mb-6"
                 style={{ background: 'rgba(168,216,64,0.12)', borderColor: 'rgba(168,216,64,0.3)', color: '#a8d840' }}>
                 <Zap className="w-3 h-3" />
-                Exclusive Trade Partnership
+                Light &amp; Privacy
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-light tracking-tight leading-tight mb-6">
-                Hunter Douglas<br />
-                <span className="italic" style={{ color: '#a8d840' }}>Certified Dealer</span>
+                Motorized<br />
+                <span className="italic" style={{ color: '#a8d840' }}>Shading</span>
               </h2>
               <p className="text-white/60 text-sm sm:text-base font-light leading-relaxed mb-8">
-                As an authorized Hunter Douglas dealer, Ginger Huff Interiors offers the complete collection of PowerView® motorized shading — including exclusive trade programs not available in retail showrooms. Our certification means factory-trained measurement, installation, and ongoing service.
+                Motorized shades can rise and lower from a remote, an app or a schedule, depending on the system. They are especially helpful on tall, wide or hard-to-reach windows, and for managing sun and privacy through the day.
               </p>
               <div className="space-y-4">
                 {[
-                  'PowerView® Automation — voice, app, or schedule control',
-                  'Duette® Architella® honeycomb shades for energy efficiency',
-                  'Silhouette® & Pirouette® shadings for soft, diffused light',
-                  'Luminette® Privacy Sheers for floor-to-ceiling windows',
-                  'Vignette® Modern Roman Shades in 100+ fabric options',
+                  'Control by remote, app or schedule, depending on the system',
+                  'Helpful for tall, wide or hard-to-reach windows',
+                  'Light-filtering, sheer and blackout options',
+                  'Scheduled lowering to manage afternoon sun',
+                  'Ask which options suit your windows and wiring',
                 ].map((feat, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#a8d840' }} />
@@ -429,18 +429,18 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
                 ))}
               </div>
               <button
-                id="wt-hd-cta-btn"
+                id="wt-motorized-cta-btn"
                 onClick={() => onNavigate('contact')}
                 className="mt-10 inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-[0.72rem] uppercase tracking-[0.18em] transition-all hover:-translate-y-0.5 cursor-pointer"
                 style={{ background: '#a8d840', color: '#1a2800', boxShadow: '0 4px 24px rgba(168,216,64,0.25)' }}
               >
-                Book a Hunter Douglas Demo
+                Ask About Motorized Options
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl">
-                <img src={launchImage1} srcSet={imageSrcSet(launchImage1, 1024)} sizes="(min-width: 1024px) 300px, 50vw" loading="lazy" decoding="async" alt="Motorized Hunter Douglas shades" className="w-full h-full object-cover" />
+                <img src={launchImage1} srcSet={imageSrcSet(launchImage1, 1024)} sizes="(min-width: 1024px) 300px, 50vw" loading="lazy" decoding="async" alt="Motorized shades in a bedroom" className="w-full h-full object-cover" />
               </div>
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl mt-8">
                 <img src={launchImage2} srcSet={imageSrcSet(launchImage2, 1024)} sizes="(min-width: 1024px) 300px, 50vw" loading="lazy" decoding="async" alt="Plantation shutters detail" className="w-full h-full object-cover" />
@@ -524,7 +524,7 @@ export default function WindowTreatmentsPage({ onNavigate }: WindowTreatmentsPag
             <span className="italic text-[#96c52e]">Something Beautiful</span>
           </h2>
           <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-xl mx-auto">
-            Schedule your complimentary in-home consultation and discover how the right window treatments can completely transform the light, privacy, and personality of your home.
+            Book a complimentary design consultation and find out how the right window treatments can change the light, privacy and personality of your home.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <button
