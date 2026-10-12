@@ -17,7 +17,9 @@ import ContactSection from './components/ContactSection';
 import TestimonialsSlider from './components/TestimonialsSlider';
 import WindowTreatmentsPage from './components/WindowTreatmentsPage';
 import ServiceDetailPage from './components/ServiceDetailPage';
-import { Mail, Phone, MapPin, Instagram, Facebook, Users, ArrowUp, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook, Users, ArrowUp, Sparkles, ShieldCheck } from 'lucide-react';
+
+const BBB_PROFILE_URL = 'https://www.bbb.org/us/il/maryville/profile/commercial-interior-designers/ginger-huff-interiors-0734-310370346';
 
 export default function App({initialPath = '/'}: {initialPath?: string}) {
   const {page: currentPage, article, service} = resolveRoute(initialPath);
@@ -128,6 +130,17 @@ export default function App({initialPath = '/'}: {initialPath?: string}) {
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-brand-500/25 text-[10px] uppercase font-mono tracking-wider text-brand-400">
                   <Sparkles className="w-3.5 h-3.5" /> Complimentary Consultation
                 </div>
+                {/* Confirmed on bbb.org (accredited since 7/16/2020). Text badge linking to the profile; swap in BBB's
+                    official dynamic seal only from the BBB business portal, never a copied logo. */}
+                <a
+                  href={BBB_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="BBB Accredited Business: view Ginger Huff Interiors on bbb.org (opens in a new tab)"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-brand-500/25 text-[10px] uppercase font-mono tracking-wider text-brand-400 hover:border-brand-400 hover:text-brand-300 transition-colors"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5" /> BBB Accredited Business
+                </a>
               </div>
             </div>
 
