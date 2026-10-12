@@ -35,9 +35,11 @@ for (const path of paths) {
     if (!routes.has(route) && !await exists(join('dist', decodeURIComponent(route)))) fail.push(`${path}: broken link ${href}`);
   }
   // Every local image or video a page references, including each srcset candidate, must exist in the build.
-  const assets = [...html.matchAll(/\b(?:src|href)="(\/[^"]+\.(?:webp|png|svg|jpg|mp4))"/g)].map(match => match[1]);
+  const assets = [...html.matchAll(/\b(?:src|href)="(\/[^"]+\.(?:webp|png|svg|jpg|mp4|ico|webmanifest))"/g)].map(match => match[1]);
   for (const [, value] of html.matchAll(/\bsrcSet="([^"]+)"/gi)) assets.push(...value.split(',').map(part => part.trim().split(/\s+/)[0]));
   for (const asset of new Set(assets)) if (!await exists(join('dist', decodeURIComponent(asset)))) fail.push(`${path}: missing asset ${asset}`);
 }
+const manifest = JSON.parse(await readFile('dist/site.webmanifest', 'utf8'));
+for (const icon of manifest.icons) if (!await exists(join('dist', icon.src))) fail.push(`site.webmanifest: missing icon ${icon.src}`);
 if (fail.length) { console.error(fail.join('\n')); process.exit(1); }
 console.log(`Checked ${SERVICE_PAGES.length} service pages and internal links on ${paths.length} routes`);
