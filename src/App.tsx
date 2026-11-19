@@ -36,7 +36,7 @@ export default function App({initialPath = '/'}: {initialPath?: string}) {
 
       {/* Each route is prerendered and served at its own URL. */}
       <main id="main-content" tabIndex={-1} className="flex-grow">
-        {['about','services','faq','contact'].includes(currentPage) && <h1 className="sr-only">{{about:'About Ginger Huff Interiors',services:'Interior Design Services',faq:'Interior Design Frequently Asked Questions',contact:'Contact Ginger Huff Interiors'}[currentPage]}</h1>}
+        {['about','services','faq','contact'].includes(currentPage) && <h1 className="sr-only">{{about:'About Ginger Huff Interiors',services:'Interior Design Services in Edwardsville, IL',faq:'Interior Design Frequently Asked Questions',contact:'Contact Ginger Huff Interiors'}[currentPage]}</h1>}
         {currentPage === 'home' && (
           <div className="space-y-0">
             {/* 1. Cinematic Hero Header */}
