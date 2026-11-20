@@ -51,7 +51,7 @@ const decode = (s: string) => s.replace(/&amp;/g,'&').replace(/&quot;/g,'"').rep
 const heroShown = (html: string, src: string, alt: string) => [...html.matchAll(/<img\b[^>]*>/gi)].some(([tag]) => attr(tag,'src') === src && decode(attr(tag,'alt') ?? '') === alt);
 test('the site advertises the Compass hero image contract the CRM requires',()=>{
   assert.deepEqual(JSON.parse(fs.readFileSync('compass-blog.json','utf8')),{version:1,adapter:'json_blog',keyword_provenance:true,markdown:true,seo_fields:true,
-    hero_image:true,hero_image_dir:'public/blog/images',hero_image_url_prefix:'/blog/images/'});
+    hero_image:true,hero_image_dir:'public/blog/images',hero_image_url_prefix:'/blog/images/',tldr:true});
 });
 test('an approved hero renders after the H1 with its exact src, alt, dimensions and priority, and no caption',()=>{
   const [post]=loadReleasedArticles([{...article,heroImage:hero}],[]);
@@ -89,4 +89,35 @@ test('a malformed hero fails the build instead of shipping',()=>{
     {...hero,illustrative:undefined},'/blog/images/x-0123456789ab.png',
   ]) assert.throws(()=>loadReleasedArticles([{...article,heroImage:bad}],[]),/hero/i,JSON.stringify(bad));
   assert.equal(loadReleasedArticles([{...article,heroImage:null}],[])[0].heroImage,undefined);
+});
+const tldr = 'Ask how the firm plans, prices and manages a project before you sign. Clear answers now prevent surprises later.';
+// The CRM's visible-text reading (blog-publisher verifyLiveArticle): scripts and styles are not what a reader sees.
+const visible = (html: string) => html.replace(/<(script|style|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi,' ').replace(/<\/(?:p|h[1-6]|li|div|article)>/gi,' ').replace(/<[^>]*>/g,'')
+  .replace(/&(?:amp|#38);/g,'&').replace(/&(?:quot|#34);/g,'"').replace(/&(?:apos|#39|#x27);/g,"'").replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
+test('the TL;DR slot: one plain-text field, labelled once, after the H1 and before the hero and body',()=>{
+  const [post]=loadReleasedArticles([{...article,tldr:'  '+tldr+' ',heroImage:hero}],[]);
+  assert.equal(post.tldr,tldr);
+  const html=renderToStaticMarkup(React.createElement(BlogSection,{article:post}));
+  const text=visible(html), at=text.indexOf(tldr);
+  assert.ok(at>=0&&text.indexOf(tldr,at+1)<0,'shown exactly once');
+  assert.match(text.slice(Math.max(0,at-24),at),/TL;DR/,'labelled');
+  assert.ok(text.indexOf(article.h1)<at&&at<text.indexOf('Room use'),'order: H1, TL;DR, body');
+  assert.ok(html.search(/TL;DR/i)<html.indexOf('<img'),'TL;DR before the hero');
+  assert.ok(heroShown(html,hero.src,hero.alt));
+  assert.equal((html.match(/data-compass-tldr/g)||[]).length,1);
+});
+test('a TL;DR also renders without a hero; articles without one get no TL;DR block',()=>{
+  const [withTldr]=loadReleasedArticles([{...article,tldr}],[]);
+  const html=renderToStaticMarkup(React.createElement(BlogSection,{article:withTldr}));
+  assert.ok(html.includes('data-compass-tldr')&&!/<img/.test(html));
+  const [plain]=loadReleasedArticles([article],[]);
+  assert.ok(!('tldr' in plain));
+  assert.ok(!/TL;DR|data-compass-tldr/.test(renderToStaticMarkup(React.createElement(BlogSection,{article:plain}))));
+  assert.ok(!('tldr' in loadReleasedArticles([{...article,tldr:null}],[])[0]));
+});
+test('a malformed or duplicated TL;DR fails the build',()=>{
+  for(const bad of [' ',42,'Line one.\nLine two.','Use <b>bold</b>.','x'.repeat(601)]) {
+    assert.throws(()=>loadReleasedArticles([{...article,tldr:bad}],[]),/TL;DR/,JSON.stringify(bad));
+  }
+  assert.throws(()=>loadReleasedArticles([{...article,tldr,bodyMarkdown:'**TL;DR:** '+tldr+'\n\n'+article.bodyMarkdown}],[]),/twice/);
 });

@@ -40,6 +40,8 @@ export interface BlogPost {
   compass?: { draft_id: string; release_hash: string; keyword_id: string; version: number };
   /** Approved Compass hero image, committed in public/blog/images/ (Compass releases only). */
   heroImage?: HeroImage;
+  /** Approved Compass TL;DR: one plain-text paragraph shown under the H1 (Compass releases only). */
+  tldr?: string;
   slug: string;
   author?: string;
   id: string;
