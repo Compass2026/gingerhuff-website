@@ -1,4 +1,5 @@
 import type { ServicePageId } from './content/service-pages';
+import type { HeroImage } from './content/blog-hero';
 export type PageId = 'home' | 'about' | 'services' | 'window-treatments' | 'portfolio' | 'blog' | 'faq' | 'contact' | 'privacy' | 'not-found' | ServicePageId;
 
 export interface Service {
@@ -37,6 +38,10 @@ export interface BlogPost {
   dateModified?: string;
   cta?: { text: string; url: string | null };
   compass?: { draft_id: string; release_hash: string; keyword_id: string; version: number };
+  /** Approved Compass hero image, committed in public/blog/images/ (Compass releases only). */
+  heroImage?: HeroImage;
+  /** Approved Compass TL;DR: one plain-text paragraph shown under the H1 (Compass releases only). */
+  tldr?: string;
   slug: string;
   author?: string;
   id: string;
